@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    screens: {
+      'closedSideBar' : {'max' : '749px'}
+    }
   },
   plugins: [],
 }

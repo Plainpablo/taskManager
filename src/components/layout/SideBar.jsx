@@ -1,19 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SideBarMenu from "../ui/SideBarMenu";
 import HelpCenter from "../ui/HelpCenter";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
+const SideBar = ({
+  sideBarOpen,
+  setSideBarOpen,
+  hideOpenIcon,
+  setHideOpenIcon,
+  isMobile
+}) => {
+  useEffect(() => console.log("sideBarOpen:", sideBarOpen), [sideBarOpen]);
 
-const SideBar = () => {
+  function handleSideBartoggle() {
+    setHideOpenIcon(false);
+    setSideBarOpen(true);
+  }
   return (
-    <div className="sideBar flex flex-col items-start justify-between p-8 lg:p-5 h-full bg-white">
-      <div className="flex flex-col gap-16 w-full items-start">
-        {/* <h1 className="px-5">Task Manager</h1> */}
-        <SideBarMenu />
+    <div className="flex flex-col">
+      <div
+        className={`mb-3 mx-3 p-3  ${hideOpenIcon ? "flex" : "hidden"}`}
+        onClick={handleSideBartoggle}
+      >
+        <button>
+          <ChevronRightIcon className="size-6" />
+        </button>
       </div>
 
-      {/* <div>
+      {/* <div
+        className={`mb-3 mx-3 p-3 ${hideOpenIcon ? "flex" : "hidden"}`}
+        onClick={handleSideBartoggle}
+      >
+        <button>
+          <ChevronRightIcon className="size-6" />
+        </button>
+      </div> */}
+
+      <div
+        className={`sideBar flex flex-col items-start justify-between p-3  h-full bg-white w-[256px] ${sideBarOpen ? "translate-x-0" : "translate-x-[-100%]"} `}
+      >
+        <div className="flex flex-col w-full items-start">
+          <SideBarMenu
+            setSideBarOpen={setSideBarOpen}
+            setHideOpenIcon={setHideOpenIcon}
+            isMobile={isMobile}
+          />
+        </div>
+
+        {/* <div>
         <HelpCenter /> 
       </div> */}
+      </div>
     </div>
   );
 };
