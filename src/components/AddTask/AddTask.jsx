@@ -19,12 +19,12 @@ const AddTask = () => {
       }
     }
 
-     if (isAddTaskOpen) {
-        document.addEventListener("mousedown", handleClickOutSide);
-      }
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutSide);
-      };
+    if (isAddTaskOpen) {
+      document.addEventListener("mousedown", handleClickOutSide);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutSide);
+    };
   }, [isAddTaskOpen]);
 
   return (

@@ -9,7 +9,7 @@ import {
   CalendarDaysIcon,
   ChevronLeftIcon,
 } from "@heroicons/react/24/outline";
-import { usePage } from "../../context/PageContext";
+import { usePage } from "../../context/PageContext.jsx";
 import { useModal } from "../../context/PopUpModalContext.jsx";
 
 const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
@@ -41,19 +41,18 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
     isMobile ? handleSidebar() : "";
   }
 
-  
   // Set active page bg color
   const [active, setActive] = useState(0);
   function setActivePage(index) {
     setActive(index);
   }
-  
+
   // Toggle side bar
   function handleSidebar() {
     setHideOpenIcon(true);
     setSideBarOpen(false);
   }
-  
+
   // Handle add task and search pop menus
   function handlePopupMenu(page) {
     console.log(page.page);
@@ -74,7 +73,7 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
         <button
           key={index}
           className="flex items-center gap-3 hover:bg-[#F5F5F7] hover:rounded-xl px-5 h-12 rounded-xl"
-           onClick={() => handlePopupMenu(page)}
+          onClick={() => handlePopupMenu(page)}
         >
           <page.icon className="size-6" />
           <h1>{page.page === "AddTask" ? "Add Task" : page.page}</h1>

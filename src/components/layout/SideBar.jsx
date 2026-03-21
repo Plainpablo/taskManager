@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import SideBarMenu from "../ui/SideBarMenu";
-import HelpCenter from "../ui/HelpCenter";
+import SideBarMenu from "../UI/SideBarMenu";
+import HelpCenter from "../UI/HelpCenter";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const SideBar = ({

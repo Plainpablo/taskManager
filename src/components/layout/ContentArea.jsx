@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Overview from "../pages/Overview";
-import Settings from "../pages/Settings";
-import Task from "../pages/Task";
-import Message from "../pages/Message";
+import Overview from "../Pages/Overview";
+import Settings from "../Pages/Settings";
+import Task from "../Pages/Task";
+import Message from "../Pages/Message";
 import { usePage } from "../../context/PageContext";
-import Today from "../pages/Today";
+import Today from "../Pages/Today";
 
 const pages = {
   Today: Today,
