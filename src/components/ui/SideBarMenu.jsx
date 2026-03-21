@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
-  HomeIcon,
   RectangleStackIcon,
   ChatBubbleLeftEllipsisIcon,
   Cog6ToothIcon,
-  Squares2X2Icon,
   PlusIcon,
   MagnifyingGlassIcon,
   CalendarIcon,
@@ -12,9 +10,10 @@ import {
   ChevronLeftIcon,
 } from "@heroicons/react/24/outline";
 import { usePage } from "../../context/PageContext";
-
+import { useModal } from "../../context/PopUpModalContext.jsx";
 
 const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
+  const { isAddTaskOpen, setIsAddTaskOpen } = useModal();
   var popupMenuPages = [
     { page: "AddTask", icon: PlusIcon },
     { page: "Search", icon: MagnifyingGlassIcon },
@@ -29,6 +28,10 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
 
   const { setCurrentPage } = usePage();
 
+  useEffect(() => {
+    console.log("Modal state changed:", isAddTaskOpen);
+  }, [isAddTaskOpen]);
+
   // Render page content on click
   function renderPage(page, index) {
     setCurrentPage(page);
@@ -38,21 +41,27 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
     isMobile ? handleSidebar() : "";
   }
 
-  // Handle add task and search pop menus
-  function handlePopupMenu() {}
-
+  
   // Set active page bg color
   const [active, setActive] = useState(0);
   function setActivePage(index) {
     setActive(index);
   }
-
+  
   // Toggle side bar
   function handleSidebar() {
     setHideOpenIcon(true);
     setSideBarOpen(false);
   }
+  
+  // Handle add task and search pop menus
+  function handlePopupMenu(page) {
+    console.log(page.page);
 
+    if (page.page === "AddTask") {
+      setIsAddTaskOpen(true);
+    }
+  }
   return (
     <div className="flex flex-col gap-3 w-full">
       <div className="left flex justify-end" onClick={handleSidebar}>
@@ -64,8 +73,8 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
       {popupMenuPages.map((page, index) => (
         <button
           key={index}
-          onClick={handlePopupMenu}
           className="flex items-center gap-3 hover:bg-[#F5F5F7] hover:rounded-xl px-5 h-12 rounded-xl"
+           onClick={() => handlePopupMenu(page)}
         >
           <page.icon className="size-6" />
           <h1>{page.page === "AddTask" ? "Add Task" : page.page}</h1>

@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { PageProvider } from "./context/PageContext.jsx";
+import { ModalProvider } from "./context/PopUpModalContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <PageProvider>
-      <App />
-    </PageProvider>
+    <ModalProvider>
+      <PageProvider>
+        <App />
+      </PageProvider>
+    </ModalProvider>
   </StrictMode>,
 );

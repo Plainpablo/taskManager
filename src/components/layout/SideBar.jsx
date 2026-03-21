@@ -10,12 +10,11 @@ const SideBar = ({
   setHideOpenIcon,
   isMobile,
 }) => {
-
   function handleSideBartoggle() {
     setHideOpenIcon(false);
     setSideBarOpen(true);
   }
-  
+
   return (
     <div className="flex flex-col">
       <div
