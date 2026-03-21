@@ -28,10 +28,6 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
 
   const { setCurrentPage } = usePage();
 
-  useEffect(() => {
-    console.log("Modal state changed:", isAddTaskOpen);
-  }, [isAddTaskOpen]);
-
   // Render page content on click
   function renderPage(page, index) {
     setCurrentPage(page);

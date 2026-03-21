@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useModal } from "../../context/PopUpModalContext";
+import DatePickerAction from "./Controls/DatePickerAction";
+import AttachmentAction from "./Controls/AttachmentAction";
+import Priority from "./Controls/Priority";
 
 const AddTask = () => {
   const [focused, setFocused] = useState(false);
@@ -53,16 +56,17 @@ const AddTask = () => {
             )}
           </div>
           <input
-            className="outline-none"
+            className="outline-none mt-1"
             type="text"
             name=""
             id=""
             placeholder="Description"
           />
-          <div className="flex gap-2">
-            <button>Today</button>
-            <button>Attachment</button>
-            <button>Priority</button>
+
+          <div className="flex gap-2 mt-2">
+            <DatePickerAction />
+            <AttachmentAction />
+            <Priority />
           </div>
         </div>
         <div className="m-4 flex gap-2 justify-end">
