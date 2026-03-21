@@ -4,8 +4,10 @@ import Settings from "../pages/Settings";
 import Task from "../pages/Task";
 import Message from "../pages/Message";
 import { usePage } from "../../context/PageContext";
+import Today from "../pages/Today";
 
 const pages = {
+  Today: Today,
   Overview: Overview,
   Settings: Settings,
   Messages: Message,
@@ -14,6 +16,7 @@ const pages = {
 
 const ContentArea = ({ isMobile, sideBarOpen }) => {
   const { currentPage } = usePage();
+
   const CurrentPage = pages[currentPage];
 
   return (

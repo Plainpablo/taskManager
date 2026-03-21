@@ -13,10 +13,13 @@ import {
 } from "@heroicons/react/24/outline";
 import { usePage } from "../../context/PageContext";
 
+
 const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
-  var menuPages = [
-    { page: "Add Task", icon: PlusIcon },
+  var popupMenuPages = [
+    { page: "AddTask", icon: PlusIcon },
     { page: "Search", icon: MagnifyingGlassIcon },
+  ];
+  var menuPages = [
     { page: "Today", icon: CalendarDaysIcon },
     { page: "Overview", icon: CalendarIcon },
     { page: "Task", icon: RectangleStackIcon },
@@ -26,16 +29,17 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
 
   const { setCurrentPage } = usePage();
 
-  //   Icon color when active = text-[#141522] else = #8E92BC
-
   // Render page content on click
   function renderPage(page, index) {
     setCurrentPage(page);
     setActivePage(index);
 
-    // Close side bar 
+    // Close side bar
     isMobile ? handleSidebar() : "";
   }
+
+  // Handle add task and search pop menus
+  function handlePopupMenu() {}
 
   // Set active page bg color
   const [active, setActive] = useState(0);
@@ -57,6 +61,17 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
         </button>
       </div>
 
+      {popupMenuPages.map((page, index) => (
+        <button
+          key={index}
+          onClick={handlePopupMenu}
+          className="flex items-center gap-3 hover:bg-[#F5F5F7] hover:rounded-xl px-5 h-12 rounded-xl"
+        >
+          <page.icon className="size-6" />
+          <h1>{page.page === "AddTask" ? "Add Task" : page.page}</h1>
+        </button>
+      ))}
+
       {menuPages.map((page, index) => (
         <button
           key={index}
@@ -64,7 +79,7 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
           className={`flex items-center gap-3 hover:bg-[#F5F5F7] hover:rounded-xl px-5 h-12 rounded-xl ${index === active ? "bg-[#F5F5F7]" : ""}`}
         >
           <page.icon className="size-6" />
-          <h1>{page.page}</h1>
+          <h1>{page.page === "AddTask" ? "Add Task" : page.page}</h1>
         </button>
       ))}
     </div>

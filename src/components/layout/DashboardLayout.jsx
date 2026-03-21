@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "./SideBar";
 import ContentArea from "./ContentArea";
+import AddTask from "../pages/AddTask";
+import Search from "../pages/Search";
 
 const DashboardLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -29,6 +31,8 @@ const DashboardLayout = () => {
 
   return (
     <div className="dashboardLayout bg-[#FAFAFA]">
+      <AddTask/>
+      
       <div className="grid grid-cols-[256px_1fr] h-full ">
         <SideBar
           sideBarOpen={sideBarOpen}

@@ -1,14 +1,14 @@
-import { createContext, useContext, useState} from 'react';
+import { createContext, useContext, useState } from "react";
 const PageContext = createContext();
 
 export const PageProvider = ({ children }) => {
-    const [currentPage, setCurrentPage] = useState("Overview");
+  const [currentPage, setCurrentPage] = useState("Today");
 
-    return(
-        <PageContext.Provider value={{ currentPage, setCurrentPage}}>
-            {children}
-        </PageContext.Provider>
-    );
-}
+  return (
+    <PageContext.Provider value={{ currentPage, setCurrentPage }}>
+      {children}
+    </PageContext.Provider>
+  );
+};
 
-export const usePage = () => useContext(PageContext)
+export const usePage = () => useContext(PageContext);

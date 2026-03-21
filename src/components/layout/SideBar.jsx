@@ -8,14 +8,14 @@ const SideBar = ({
   setSideBarOpen,
   hideOpenIcon,
   setHideOpenIcon,
-  isMobile
+  isMobile,
 }) => {
-  useEffect(() => console.log("sideBarOpen:", sideBarOpen), [sideBarOpen]);
 
   function handleSideBartoggle() {
     setHideOpenIcon(false);
     setSideBarOpen(true);
   }
+  
   return (
     <div className="flex flex-col">
       <div
@@ -26,15 +26,6 @@ const SideBar = ({
           <ChevronRightIcon className="size-6" />
         </button>
       </div>
-
-      {/* <div
-        className={`mb-3 mx-3 p-3 ${hideOpenIcon ? "flex" : "hidden"}`}
-        onClick={handleSideBartoggle}
-      >
-        <button>
-          <ChevronRightIcon className="size-6" />
-        </button>
-      </div> */}
 
       <div
         className={`sideBar flex flex-col items-start justify-between p-3  h-full bg-white w-[256px] ${sideBarOpen ? "translate-x-0" : "translate-x-[-100%]"} `}
