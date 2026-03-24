@@ -36,14 +36,15 @@ const DashboardLayout = () => {
     setIsAddTaskOpen(false);
   }
 
+  console.log("sideBarOpen:", sideBarOpen)
+
   return (
     <div className="dashboardLayout bg-[#FAFAFA]">
       <AddTask />
       <Search />
-
       <div
-        className="grid grid-cols-[256px_1fr] h-full"
-        // onClick={() => handlePopupMenu()}
+        className={`grid ${sideBarOpen ? "grid-cols-[256px_1fr]" : "grid-cols-[auto_1fr]"} h-full`}
+        onClick={() => handlePopupMenu()}
       >
         <SideBar
           sideBarOpen={sideBarOpen}

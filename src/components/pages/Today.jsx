@@ -9,7 +9,7 @@ const Today = () => {
     value === "MouseEnter"
       ? setIsHover(true)
       : value === "MouseLeave"
-        ? setIsHover(false)
+        ? setIsHover(false) 
         : "";
   }
   return (

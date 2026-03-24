@@ -27,16 +27,15 @@ const SideBar = ({
       </div>
 
       <div
-        className={`sideBar flex flex-col items-start justify-between p-3  h-full bg-white w-[256px] ${sideBarOpen ? "translate-x-0" : "translate-x-[-100%]"} `}
+        className={`sideBar flex flex-col items-start justify-between p-3  h-full bg-white w-full ${sideBarOpen ? "translate-x-0" : "translate-x-[-100%]"} `}
       >
-        <div className="flex flex-col w-full items-start">
+        {sideBarOpen && <div className="flex flex-col w-full items-start">
           <SideBarMenu
             setSideBarOpen={setSideBarOpen}
             setHideOpenIcon={setHideOpenIcon}
             isMobile={isMobile}
           />
-        </div>
-
+        </div>}
         {/* <div>
         <HelpCenter /> 
       </div> */}
