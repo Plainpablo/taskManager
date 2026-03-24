@@ -4,13 +4,16 @@ import "./index.css";
 import App from "./App.jsx";
 import { PageProvider } from "./context/PageContext.jsx";
 import { ModalProvider } from "./context/PopUpModalContext.jsx";
+import { SearchProvider } from "./context/SearchContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ModalProvider>
-      <PageProvider>
-        <App />
-      </PageProvider>
-    </ModalProvider>
+    <SearchProvider>
+      <ModalProvider>
+        <PageProvider>
+          <App />
+        </PageProvider>
+      </ModalProvider>
+    </SearchProvider>
   </StrictMode>,
 );

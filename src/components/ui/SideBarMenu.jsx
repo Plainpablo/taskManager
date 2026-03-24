@@ -11,9 +11,12 @@ import {
 } from "@heroicons/react/24/outline";
 import { usePage } from "../../context/PageContext.jsx";
 import { useModal } from "../../context/PopUpModalContext.jsx";
+import { useSearch } from "../../context/SearchContext.jsx";
 
 const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
   const { isAddTaskOpen, setIsAddTaskOpen } = useModal();
+  const { isSearchOpen, setIsSearchOpen } = useSearch();
+
   var popupMenuPages = [
     { page: "AddTask", icon: PlusIcon },
     { page: "Search", icon: MagnifyingGlassIcon },
@@ -55,6 +58,8 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
 
     if (page.page === "AddTask") {
       setIsAddTaskOpen(true);
+    } else if (page.page === "Search") {
+      setIsSearchOpen(true);
     }
   }
   return (

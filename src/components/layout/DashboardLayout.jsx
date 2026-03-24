@@ -3,6 +3,7 @@ import SideBar from "./SideBar";
 import ContentArea from "./ContentArea";
 import AddTask from "../AddTask/AddTask";
 import { useModal } from "../../context/PopUpModalContext";
+import Search from "../Search/Search";
 
 const DashboardLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -38,6 +39,7 @@ const DashboardLayout = () => {
   return (
     <div className="dashboardLayout bg-[#FAFAFA]">
       <AddTask />
+      <Search />
 
       <div
         className="grid grid-cols-[256px_1fr] h-full"
