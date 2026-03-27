@@ -9,7 +9,6 @@ const DashboardLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [sideBarOpen, setSideBarOpen] = useState(true);
   const [hideOpenIcon, setHideOpenIcon] = useState(true);
-  const { setIsAddTaskOpen } = useModal();
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 749px)");
@@ -31,20 +30,12 @@ const DashboardLayout = () => {
     return () => window.removeEventListener("change", handleChange);
   }, []);
 
-  // Handle add task and search pop menus
-  function handlePopupMenu() {
-    setIsAddTaskOpen(false);
-  }
-
-  console.log("sideBarOpen:", sideBarOpen)
-
   return (
     <div className="dashboardLayout bg-[#FAFAFA]">
       <AddTask />
       <Search />
       <div
         className={`grid ${sideBarOpen ? "grid-cols-[256px_1fr]" : "grid-cols-[auto_1fr]"} h-full`}
-        onClick={() => handlePopupMenu()}
       >
         <SideBar
           sideBarOpen={sideBarOpen}

@@ -54,8 +54,6 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
 
   // Handle add task and search pop menus
   function handlePopupMenu(page) {
-    console.log(page.page);
-
     if (page.page === "AddTask") {
       setIsAddTaskOpen(true);
     } else if (page.page === "Search") {
