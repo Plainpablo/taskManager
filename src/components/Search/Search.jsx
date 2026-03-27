@@ -75,47 +75,139 @@ const Search = () => {
           </div>
         </div>
 
-        <div className="flex flex-col">
-          <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
-            Navigation
-          </p>
-
-           <SearchControlBtn
-            Icon={MagnifyingGlassIcon}
-            title="Go to home"
-            shortcutLeft="G"
-            shortcutRight="K"
-            thenText
-          />
-
-           <SearchControlBtn
-            Icon={MagnifyingGlassIcon}
-            title="Go to Today"
-            shortcutLeft="G"
-            shortcutRight="T"
-            thenText
-          />
-
-           <SearchControlBtn
-            Icon={MagnifyingGlassIcon}
-            title="Go to Upcoming"
-            shortcutLeft="G"
-            shortcutRight="U"
-            thenText
-          />
-
-           <SearchControlBtn
-            Icon={MagnifyingGlassIcon}
-            title="Go to Completed"
-            shortcutLeft="G"
-            shortcutRight="C"
-            thenText
-          />
+        <div className="flex flex-col max-h-[calc(100vh-13vh*2)] overflow-y-auto">
+          <div>
+            <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
+              Navigation
+            </p>
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Go to home"
+              shortcutLeft="G"
+              shortcutRight="K"
+              thenText
+            />
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Go to Today"
+              shortcutLeft="G"
+              shortcutRight="T"
+              thenText
+            />
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Go to Upcoming"
+              shortcutLeft="G"
+              shortcutRight="U"
+              thenText
+            />
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Go to Completed"
+              shortcutLeft="G"
+              shortcutRight="C"
+              thenText
+            />
+          </div>
 
           <div className="border-y-[1px] border-y-[#f5f5f5]">
             <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
               Add
             </p>
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Add task"
+              shortcutRight="Q"
+            />
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Add project"
+              shortcutLeft="Alt"
+              shortcutRight="P"
+            />
+          </div>
+
+          <div className="border-y-[1px] border-y-[#f5f5f5]">
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Show/hide completed tasks"
+            />
+          </div>
+
+          <div className="border-y-[1px] border-y-[#f5f5f5]">
+            <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
+              Templates
+            </p>
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Import from CSV"
+            />
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Export as CSV"
+            />
+          </div>
+
+          <div className="border-y-[1px] border-y-[#f5f5f5]">
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Open user menu"
+              shortcutLeft="O"
+              shortcutRight="U"
+              thenText
+            />
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Open settings"
+              shortcutLeft="O"
+              shortcutRight="S"
+              thenText
+            />
+          </div>
+
+          <div className="border-y-[1px] border-y-[#f5f5f5]">
+            <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
+              Help
+            </p>
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Show keyboard shortcuts"
+              shortcutRight="?"
+            />
+          </div>
+          <div className="border-y-[1px] border-y-[#f5f5f5]">
+            <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
+              Miscellaneous
+            </p>
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Print current view"
+              shortcutLeft="Ctrl"
+              shortcutRight="P"
+            />
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Open/close sidebar"
+              shortcutRight="M"
+            />
+          </div>
+
+          <div className="border-y-[1px] border-y-[#f5f5f5]">
+            <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
+              Settings
+            </p>
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="General"
+              shortcutLeft="O"
+              shortcutRight="S"
+              thenText
+            />
+            <SearchControlBtn
+              Icon={MagnifyingGlassIcon}
+              title="Backups"
+              shortcutRight="M"
+            />
           </div>
         </div>
       </div>
