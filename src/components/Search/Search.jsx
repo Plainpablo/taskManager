@@ -53,9 +53,9 @@ const Search = () => {
   return (
     <div
       ref={searchRef}
-      className={`fixed z-20 flex-col w-full max-w-[650px] right-0 left-0 mx-auto top-[calc(13vh-32px)]  bg-white shadow-[0_15px_50px_rgba(0,0,0,0.35)] rounded-[10px] h-fit ${isSearchOpen ? "flex" : "hidden"}`}
+      className={`fixed z-20 flex-col w-full max-w-[650px] p-8 right-0 left-0 mx-auto top-[calc(13vh-32px)] ${isSearchOpen ? "flex pointer-events-auto" : "pointer-events-none hidden"}`}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col bg-white shadow-[0_15px_50px_rgba(0,0,0,0.35)] rounded-[10px] h-fit right-0 left-0 mx-auto`">
         <div className=" px-3 flex w-full h-[50px] justify-center items-center border-b-[1px] border-[#f5f5f5]">
           <div className="ml-2 size-6 w-6 h-6 flex justify-center items-center">
             <MagnifyingGlassIcon className="size-4 w-4 h-4" />
@@ -110,7 +110,7 @@ const Search = () => {
             />
           </div>
 
-          <div className="border-y-[1px] border-y-[#f5f5f5]">
+          <div className="border-t-[1px] border-t-[#f5f5f5]">
             <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
               Add
             </p>
@@ -127,14 +127,14 @@ const Search = () => {
             />
           </div>
 
-          <div className="border-y-[1px] border-y-[#f5f5f5]">
+          <div className="border-t-[1px] border-t-[#f5f5f5]">
             <SearchControlBtn
               Icon={MagnifyingGlassIcon}
               title="Show/hide completed tasks"
             />
           </div>
 
-          <div className="border-y-[1px] border-y-[#f5f5f5]">
+          <div className="border-t-[1px] border-t-[#f5f5f5]">
             <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
               Templates
             </p>
@@ -148,7 +148,7 @@ const Search = () => {
             />
           </div>
 
-          <div className="border-y-[1px] border-y-[#f5f5f5]">
+          <div className="border-t-[1px] border-t-[#f5f5f5]">
             <SearchControlBtn
               Icon={MagnifyingGlassIcon}
               title="Open user menu"
@@ -165,7 +165,7 @@ const Search = () => {
             />
           </div>
 
-          <div className="border-y-[1px] border-y-[#f5f5f5]">
+          <div className="border-t-[1px] border-t-[#f5f5f5]">
             <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
               Help
             </p>
@@ -175,7 +175,7 @@ const Search = () => {
               shortcutRight="?"
             />
           </div>
-          <div className="border-y-[1px] border-y-[#f5f5f5]">
+          <div className="border-t-[1px] border-t-[#f5f5f5]">
             <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
               Miscellaneous
             </p>
@@ -192,7 +192,7 @@ const Search = () => {
             />
           </div>
 
-          <div className="border-y-[1px] border-y-[#f5f5f5]">
+          <div className="border-t-[1px] border-t-[#f5f5f5]">
             <p className="text-[#666] text-xs pl-3 pt-3 pr-1 pb-1 text-start">
               Settings
             </p>
