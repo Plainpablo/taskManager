@@ -1,39 +1,57 @@
 import {
-    CheckIcon,
+  CheckIcon,
   EllipsisHorizontalIcon,
   EllipsisVerticalIcon,
   PencilIcon,
 } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
-function TaskItem({ taskTitle, description }) {
+function TaskItem({ taskTitle, description, index }) {
+  const [isCheckHover, setIsCheckHover] = useState(false);
+  const [isIteamHover, setIsIteamHover] = useState(false);
+
+  function handleCheckBoxHover() {}
+
   return (
-    <li className="flex flex-col ">
+    <li
+      onMouseEnter={() => setIsIteamHover(true)}
+      onMouseLeave={() => setIsIteamHover(false)}
+      className="flex flex-col cursor-pointer"
+    >
       <div className="flex justify-between items-center  py-2">
-        <div className="flex">
-          <div className="flex">
-            <button>
-              <EllipsisVerticalIcon className="w-[18px]" />
-            </button>
-          </div>
+        <div className="flex relative">
+          {isIteamHover && (
+            <div className="flex absolute left-[-24px]">
+              <button>
+                <EllipsisVerticalIcon className="w-[18px] text-[#666]" />
+              </button>
+            </div>
+          )}
           <div className="flex justify-center gap-2 items-center">
-            <span className="border-[1px] rounded-full border-[#999] w-[18px] h-[18px] flex justify-center items-center">
-                <CheckIcon className="text-[#999] w-3 " />
+            <span
+              onMouseEnter={() => setIsCheckHover(true)}
+              onMouseLeave={() => setIsCheckHover(false)}
+              className="border-[1px] rounded-full border-[#999] w-[18px] h-[18px] flex justify-center items-center"
+            >
+              {isCheckHover && <CheckIcon className="text-[#999] w-3 " />}
             </span>
             <span className="text-[#202020]">{taskTitle}</span>
           </div>
         </div>
 
-        <div className="flex gap-2 justify-center">
-          <button>
-            <PencilIcon className="size-[18px] text-[#666]" />
-          </button>
-          <button>
-            <EllipsisHorizontalIcon className="size-[18px] text-[#666]" />
-          </button>
-        </div>
+        {isIteamHover && (
+          <div className="flex gap-2 justify-center">
+            <button>
+              <PencilIcon className="size-[18px] text-[#666]" />
+            </button>
+            <button>
+              <EllipsisHorizontalIcon className="size-[18px] text-[#666]" />
+            </button>
+          </div>
+        )}
       </div>
       <div className="flex">
-        <span className="w-[39px]"></span>
+        <span className="w-[26px]"></span>
         <span className="text-[#666]">{description}</span>
       </div>
     </li>

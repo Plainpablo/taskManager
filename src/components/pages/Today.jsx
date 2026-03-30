@@ -1,8 +1,6 @@
 import {
   PlusIcon,
-  EllipsisVerticalIcon,
-  PencilIcon,
-  EllipsisHorizontalIcon,
+  CheckCircleIcon,
 } from "@heroicons/react/24/outline";
 import bgImage from "../../assets/images/vacation-vector.png";
 import { useState } from "react";
@@ -43,13 +41,18 @@ const Today = () => {
       </div>
       {
         <div className="px-14">
-          <div className="flex gap-2 mb-2">
-            <input className="text-[#666]" type="radio" name="" id="" />
-            <span  className="text-[#666]">1 task</span>
+          <div className="flex items-center gap-2 mb-2">
+             <CheckCircleIcon className="text-[#666] size-3" />
+            <span className="text-[#666]">1 task</span>
           </div>
           <ul className="border-[#eee] border-b-[1px]">
             {taskList.map((task, index) => (
-            <TaskItem key={index} taskTitle={task.taskTitle} description={task.description} />
+              <TaskItem
+                key={index}
+                index={index}
+                taskTitle={task.taskTitle}
+                description={task.description}
+              />
             ))}
           </ul>
         </div>
