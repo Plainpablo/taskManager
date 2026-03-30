@@ -6,6 +6,7 @@ import bgImage from "../../assets/images/vacation-vector.png";
 import { useState } from "react";
 import AddTaskPage from "../AddTask/AddTaskPage";
 import TaskItem from "../AddTask/TaskItem";
+import { PageHeader } from "../UI/PageHeader";
 
 const Today = () => {
   const [isHover, setIsHover] = useState(false);
@@ -36,6 +37,7 @@ const Today = () => {
   ];
   return (
     <div className="flex flex-col">
+      <PageHeader />
       <div className="flex mx-14 mb-3">
         <h1 className="text-2xl font-bold">Today</h1>
       </div>

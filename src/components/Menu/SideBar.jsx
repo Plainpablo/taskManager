@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import SideBarMenu from "../UI/SideBarMenu";
+import SideBarMenu from "./SideBarMenus";
 import HelpCenter from "../UI/HelpCenter";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
@@ -17,14 +17,14 @@ const SideBar = ({
 
   return (
     <div className="flex flex-col">
-      <div
+       {/* <div
         className={`mb-3 mx-3 p-3  ${hideOpenIcon ? "flex" : "hidden"}`}
         onClick={handleSideBartoggle}
       >
         <button>
           <ChevronRightIcon className="size-6" />
         </button>
-      </div>
+      </div> */}
 
       <div
         className={`sideBar flex flex-col items-start justify-between p-3  h-full bg-white w-full ${sideBarOpen ? "translate-x-0" : "translate-x-[-100%]"} `}

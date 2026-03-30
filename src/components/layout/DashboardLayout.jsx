@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import SideBar from "./SideBar";
+import SideBar from "../Menu/SideBar";
 import ContentArea from "./ContentArea";
 import AddTask from "../AddTask/AddTask";
 import { useModal } from "../../context/PopUpModalContext";
 import Search from "../Search/Search";
+import useSideBarMenu from "../../context/SideBarMenuContext";
 
 const DashboardLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [sideBarOpen, setSideBarOpen] = useState(true);
-  const [hideOpenIcon, setHideOpenIcon] = useState(true);
+  const {sideBarOpen, setSideBarOpen, hideOpenIcon, setHideOpenIcon} = useSideBarMenu();
+
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 749px)");
@@ -32,10 +33,11 @@ const DashboardLayout = () => {
 
   return (
     <div className="dashboardLayout bg-[#FAFAFA]">
+      {/* Pop ups */}
       <AddTask />
       <Search />
       <div
-        className={`grid ${sideBarOpen ? "grid-cols-[256px_1fr]" : "grid-cols-[auto_1fr]"} h-full`}
+        className={`grid ${sideBarOpen ? "grid-cols-[256px_1fr]" : "grid-cols-[0_1fr]"} h-full`}
       >
         <SideBar
           sideBarOpen={sideBarOpen}

@@ -60,6 +60,7 @@ const SideBarMenu = ({ setSideBarOpen, setHideOpenIcon, isMobile }) => {
       setIsSearchOpen(true);
     }
   }
+
   return (
     <div className="flex flex-col gap-3 w-full">
       <div className="left flex justify-end" onClick={handleSidebar}>
