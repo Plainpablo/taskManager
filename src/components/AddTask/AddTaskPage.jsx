@@ -4,14 +4,15 @@ import DatePickerAction from "./Controls/DatePickerAction";
 import AttachmentAction from "./Controls/AttachmentAction";
 import Priority from "./Controls/Priority";
 
-const AddTaskPage = () => {
+const AddTaskPage = ({ setAddTaskModal }) => {
   const [focused, setFocused] = useState(false);
+  const [isInputNull, setIsInputNull] = useState(true);
   const { isAddTaskOpen, setIsAddTaskOpen } = useModal();
   const modalRef = useRef(null);
 
   // Handle add task and search pop menus
   function handlePopupMenu() {
-    setIsAddTaskOpen(false);
+    setAddTaskModal(false);
   }
 
   // Close pop with outside click
@@ -30,10 +31,14 @@ const AddTaskPage = () => {
     };
   }, [isAddTaskOpen]);
 
+  function handleInputChange(e) {
+    e.target.value !== "" ? setIsInputNull(false) : setIsInputNull(true);
+  }
+
   return (
     <div
       ref={modalRef}
-      className={`fixed z-20 flex-col w-full max-w-[550px] p-8 right-0 left-0 mx-auto top-[calc(13vh-32px)] flex`}
+      className={`flex-col w-full px-14 right-0 left-0 mx-auto top-[calc(13vh-32px)] flex`}
     >
       <div
         className={`w-full bg-white border-[1px] border-[#e6e6e6] rounded-[10px] h-fit right-0 left-0 mx-auto`}
@@ -48,6 +53,7 @@ const AddTaskPage = () => {
               placeholder="Title of the task"
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
+              onChange={handleInputChange}
             />
             {!focused && (
               <span className="absolute left-[-2px] animate-blink pointer-events-none top-[-8px] text-[22px]">
@@ -76,7 +82,9 @@ const AddTaskPage = () => {
           >
             <span>Cancel</span>
           </button>
-          <button className="px-3 py-1 rounded-[5px] bg-[#eda59e] text-white cursor-not-allowed">
+          <button
+            className={`px-3 py-1 rounded-[5px] text-white  ${isInputNull ? "bg-[#eda59e] cursor-not-allowed" : "cursor-auto bg-[#d33322]"}`}
+          >
             <span>Add Task</span>
           </button>
         </div>
