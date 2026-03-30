@@ -7,6 +7,7 @@ import {
 import bgImage from "../../assets/images/vacation-vector.png";
 import { useState } from "react";
 import AddTaskPage from "../AddTask/AddTaskPage";
+import TaskItem from "../AddTask/TaskItem";
 
 const Today = () => {
   const [isHover, setIsHover] = useState(false);
@@ -24,6 +25,17 @@ const Today = () => {
   function handleAddTask() {
     setAddTaskModal(true);
   }
+
+  const taskList = [
+    {
+      taskTitle: "Task 01",
+      description: "Description test!!",
+    },
+    {
+      taskTitle: "Task 02",
+      description: "Description test!!",
+    },
+  ];
   return (
     <div className="flex flex-col">
       <div className="flex mx-14 mb-3">
@@ -35,29 +47,10 @@ const Today = () => {
             <input type="radio" name="" id="" />
             <span>1 task</span>
           </div>
-          <ul>
-            <li className="flex justify-between items-center border-[#eee] border-b-[1px] py-2">
-              <div className="flex">
-                <div className="flex">
-                  <button>
-                    <EllipsisVerticalIcon className="w-[18px]" />
-                  </button>
-                </div>
-                <div className="flex justify-center gap-2">
-                  <input type="radio" />
-                  <span>Title</span>
-                </div>
-              </div>
-
-              <div className="flex gap-2 justify-center">
-                <button>
-                  <PencilIcon className="size-[18px]" />
-                </button>
-                <button>
-                  <EllipsisHorizontalIcon className="size-[18px]" />
-                </button>
-              </div>
-            </li>
+          <ul className="border-[#eee] border-b-[1px]">
+            {taskList.map((task, index) => (
+            <TaskItem key={index} taskTitle={task.taskTitle} description={task.description} />
+            ))}
           </ul>
         </div>
       }
