@@ -44,8 +44,8 @@ const Today = () => {
       {
         <div className="px-14">
           <div className="flex gap-2 mb-2">
-            <input type="radio" name="" id="" />
-            <span>1 task</span>
+            <input className="text-[#666]" type="radio" name="" id="" />
+            <span  className="text-[#666]">1 task</span>
           </div>
           <ul className="border-[#eee] border-b-[1px]">
             {taskList.map((task, index) => (
