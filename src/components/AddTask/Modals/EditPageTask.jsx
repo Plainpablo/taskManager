@@ -5,11 +5,18 @@ import AttachmentAction from "../Controls/AttachmentAction";
 import Priority from "../Controls/Priority";
 import { useData } from "../../../context/TaskDatabase";
 
-export const EditPageTask = ({ taskTitle, description, setIsEditTask }) => {
+export const EditPageTask = ({
+  taskTitle,
+  description,
+  setIsEditTask,
+  id,
+  taskId,
+}) => {
   const [focused, setFocused] = useState(false);
   const [isInputNull, setIsInputNull] = useState(true);
   const [titleValue, setTitleValue] = useState(taskTitle);
   const [descriptionValue, setDescriptionValue] = useState(description);
+  const [taskIdValue, setTaskIdValue] = useState(id);
   const { setData } = useData();
 
   function handleInputChange() {}
@@ -17,13 +24,22 @@ export const EditPageTask = ({ taskTitle, description, setIsEditTask }) => {
 
   //Update task title value on change
   function handleInputChange(e) {
-    e.target.value !== "" ? setIsInputNull(false) : setIsInputNull(true);
-    setTitleValue(e.target.value);
+    if (e.target.value !== "") {
+      setIsInputNull(false);
+      setTitleValue(e.target.value);
+    } else {
+      setIsInputNull(true);
+    }
   }
 
   // Update description value on change
   function handleDescriptionInputChange(e) {
-    setDescriptionValue(e.target.value);
+    if (e.target.value !== "") {
+      setIsInputNull(false);
+      setDescriptionValue(e.target.value);
+    } else {
+      setIsInputNull(true);
+    }
   }
 
   // Update database for current task
@@ -33,6 +49,7 @@ export const EditPageTask = ({ taskTitle, description, setIsEditTask }) => {
         task.id === id ? { ...task, ...updateValues } : task,
       ),
     );
+    setIsEditTask(false);
   }
   return (
     <div
@@ -46,8 +63,8 @@ export const EditPageTask = ({ taskTitle, description, setIsEditTask }) => {
             <input
               className="outline-none "
               type="text"
-              name=""
-              id=""
+              name="title"
+              id="title"
               placeholder="Title of the task"
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
@@ -63,8 +80,8 @@ export const EditPageTask = ({ taskTitle, description, setIsEditTask }) => {
           <input
             className="outline-none mt-1"
             type="text"
-            name=""
-            id=""
+            name="description"
+            id="description"
             placeholder="Description"
             onChange={handleDescriptionInputChange}
             value={descriptionValue}

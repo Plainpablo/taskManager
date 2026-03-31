@@ -1,7 +1,4 @@
-import {
-  PlusIcon,
-  CheckCircleIcon,
-} from "@heroicons/react/24/outline";
+import { PlusIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import bgImage from "../../assets/images/vacation-vector.png";
 import { useState } from "react";
 import AddPageTask from "../AddTask/Modals/AddPageTask";
@@ -26,24 +23,26 @@ const Today = () => {
     setAddTaskModal(true);
   }
 
-  const {data} = useData()
+  const { data } = useData();
+
   return (
     <div className="flex flex-col">
       <PageHeader />
       <div className="flex mx-14 mb-3">
         <h1 className="text-2xl font-bold">Today</h1>
       </div>
+      {/* Render task list */}
       {
         <div className="px-14">
           <div className="flex items-center gap-2 mb-2">
-             <CheckCircleIcon className="text-[#666] size-3" />
+            <CheckCircleIcon className="text-[#666] size-3" />
             <span className="text-[#666]">1 task</span>
           </div>
           <ul className="border-[#eee] border-b-[1px]">
-            {data.map((task, index) => (
+            {data.map((task) => (
               <TaskItem
-                key={index}
-                index={index}
+                key={task.id}
+                id={task.id}
                 taskTitle={task.taskTitle}
                 description={task.description}
               />
