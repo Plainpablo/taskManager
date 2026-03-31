@@ -3,25 +3,36 @@ import { useModal } from "../../../context/PopUpModalContext";
 import DatePickerAction from "../Controls/DatePickerAction";
 import AttachmentAction from "../Controls/AttachmentAction";
 import Priority from "../Controls/Priority";
+import { useData } from "../../../context/TaskDatabase";
 
 export const EditPageTask = ({ taskTitle, description, setIsEditTask }) => {
   const [focused, setFocused] = useState(false);
   const [isInputNull, setIsInputNull] = useState(true);
   const [titleValue, setTitleValue] = useState(taskTitle);
   const [descriptionValue, setDescriptionValue] = useState(description);
+  const { setData } = useData();
 
   function handleInputChange() {}
   function handlePopupMenu() {}
 
+  //Update task title value on change
   function handleInputChange(e) {
-    e.target.value !== ""
-      ? setIsInputNull(false)
-      : setIsInputNull(true);
-      setTitleValue(e.target.value)
+    e.target.value !== "" ? setIsInputNull(false) : setIsInputNull(true);
+    setTitleValue(e.target.value);
   }
-  
+
+  // Update description value on change
   function handleDescriptionInputChange(e) {
-      setDescriptionValue(e.target.value)
+    setDescriptionValue(e.target.value);
+  }
+
+  // Update database for current task
+  function handleUpdateTask(id, updateValues) {
+    setData((prevData) =>
+      prevData.map((task) =>
+        task.id === id ? { ...task, ...updateValues } : task,
+      ),
+    );
   }
   return (
     <div
@@ -72,8 +83,15 @@ export const EditPageTask = ({ taskTitle, description, setIsEditTask }) => {
           >
             <span>Cancel</span>
           </button>
+
           <button
             className={`px-3 py-1 rounded-[5px] text-white  ${isInputNull ? "bg-[#eda59e] cursor-not-allowed" : "cursor-auto bg-[#d33322]"}`}
+            onClick={() =>
+              handleUpdateTask(id, {
+                taskTitle: titleValue,
+                description: descriptionValue,
+              })
+            }
           >
             <span>Add Task</span>
           </button>
