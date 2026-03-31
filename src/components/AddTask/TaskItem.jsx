@@ -5,15 +5,21 @@ import {
   PencilIcon,
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { EditPageTask } from "./Modals/EditPageTask";
 
 function TaskItem({ taskTitle, description, index }) {
   const [isCheckHover, setIsCheckHover] = useState(false);
   const [isIteamHover, setIsIteamHover] = useState(false);
+  const [isEditTask, setIsEditTask] = useState(false);
 
-  function handleCheckBoxHover() {}
+function handleEditTask(e) {
+  setIsEditTask(true);
+}
 
   return (
-    <li
+    <>
+    {/* Render Tasks  */}
+     {!isEditTask && <li
       onMouseEnter={() => setIsIteamHover(true)}
       onMouseLeave={() => setIsIteamHover(false)}
       className="flex flex-col cursor-pointer"
@@ -41,7 +47,9 @@ function TaskItem({ taskTitle, description, index }) {
 
         {isIteamHover && (
           <div className="flex gap-2 justify-center">
-            <button>
+            <button
+            onClick={handleEditTask}
+            >
               <PencilIcon className="size-[18px] text-[#666]" />
             </button>
             <button>
@@ -54,7 +62,17 @@ function TaskItem({ taskTitle, description, index }) {
         <span className="w-[26px]"></span>
         <span className="text-[#666]">{description}</span>
       </div>
-    </li>
+    </li>}
+
+     {/* Render Edit Task Modal  */}
+     {isEditTask && 
+     <EditPageTask 
+     taskTitle={taskTitle} 
+     description={description}
+     setIsEditTask={setIsEditTask}
+     />}
+    </>
+   
   );
 }
 

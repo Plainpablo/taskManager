@@ -1,6 +1,5 @@
 import React from 'react'
-
-import PageHeader from "../UI/PageHeader"
+import { PageHeader } from "../UI/PageHeader";
 const Task = () => {
   return (
     <div>

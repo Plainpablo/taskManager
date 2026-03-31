@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "../Menu/SideBar";
 import ContentArea from "./ContentArea";
-import AddTask from "../AddTask/AddTask";
+import AddTask from "../AddTask/Modals/AddTask";
 import { useModal } from "../../context/PopUpModalContext";
 import Search from "../Search/Search";
 import useSideBarMenu from "../../context/SideBarMenuContext";

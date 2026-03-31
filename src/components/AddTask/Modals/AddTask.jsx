@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useModal } from "../../context/PopUpModalContext";
-import DatePickerAction from "./Controls/DatePickerAction";
-import AttachmentAction from "./Controls/AttachmentAction";
-import Priority from "./Controls/Priority";
+import { useModal } from "../../../context/PopUpModalContext";
+import DatePickerAction from "../Controls/DatePickerAction";
+import AttachmentAction from "../Controls/AttachmentAction";
+import Priority from "../Controls/Priority";
 
 const AddTask = () => {
   const [focused, setFocused] = useState(false);

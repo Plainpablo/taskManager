@@ -6,9 +6,11 @@ import { PageProvider } from "./context/PageContext.jsx";
 import { ModalProvider } from "./context/PopUpModalContext.jsx";
 import { SearchProvider } from "./context/SearchContext.jsx";
 import { SideBarMenuProvider } from "./context/SideBarMenuContext.jsx";
+import { TaskDatabaseProvider } from "./context/TaskDatabase.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <TaskDatabaseProvider>
     <SideBarMenuProvider>
     <SearchProvider>
         <ModalProvider>
@@ -18,5 +20,6 @@ createRoot(document.getElementById("root")).render(
         </ModalProvider>
       </SearchProvider>
     </SideBarMenuProvider>
+    </TaskDatabaseProvider>
   </StrictMode>,
 );

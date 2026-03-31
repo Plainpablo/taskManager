@@ -4,9 +4,10 @@ import {
 } from "@heroicons/react/24/outline";
 import bgImage from "../../assets/images/vacation-vector.png";
 import { useState } from "react";
-import AddTaskPage from "../AddTask/AddTaskPage";
+import AddPageTask from "../AddTask/Modals/AddPageTask";
 import TaskItem from "../AddTask/TaskItem";
 import { PageHeader } from "../UI/PageHeader";
+import { useData } from "../../context/TaskDatabase";
 
 const Today = () => {
   const [isHover, setIsHover] = useState(false);
@@ -25,16 +26,7 @@ const Today = () => {
     setAddTaskModal(true);
   }
 
-  const taskList = [
-    {
-      taskTitle: "Task 01",
-      description: "Description test!!",
-    },
-    {
-      taskTitle: "Task 02",
-      description: "Description test!!",
-    },
-  ];
+  const {data} = useData()
   return (
     <div className="flex flex-col">
       <PageHeader />
@@ -48,7 +40,7 @@ const Today = () => {
             <span className="text-[#666]">1 task</span>
           </div>
           <ul className="border-[#eee] border-b-[1px]">
-            {taskList.map((task, index) => (
+            {data.map((task, index) => (
               <TaskItem
                 key={index}
                 index={index}
@@ -95,7 +87,7 @@ const Today = () => {
           )}
         </>
       )}
-      {addTaskModal && <AddTaskPage setAddTaskModal={setAddTaskModal} />}
+      {addTaskModal && <AddPageTask setAddTaskModal={setAddTaskModal} />}
     </div>
   );
 };
