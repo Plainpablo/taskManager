@@ -3,11 +3,15 @@ import { useModal } from "../../../context/PopUpModalContext";
 import DatePickerAction from "../Controls/DatePickerAction";
 import AttachmentAction from "../Controls/AttachmentAction";
 import Priority from "../Controls/Priority";
+import { useData } from "../../../context/TaskDatabase";
 
 const AddPageTask = ({ setAddTaskModal }) => {
   const [focused, setFocused] = useState(false);
   const [isInputNull, setIsInputNull] = useState(true);
+  const [titleValue, setTitleValue] = useState();
+  const [descriptionValue, setDescriptionValue] = useState();
   const { isAddTaskOpen, setIsAddTaskOpen } = useModal();
+  const { data, setData } = useData();
   const modalRef = useRef(null);
 
   // Handle add task and search pop menus
@@ -31,8 +35,32 @@ const AddPageTask = ({ setAddTaskModal }) => {
     };
   }, [isAddTaskOpen]);
 
+  // Handle title change - Enable add task btn - capture title value
   function handleInputChange(e) {
-    e.target.value !== "" ? setIsInputNull(false) : setIsInputNull(true);
+    if (e.target.value !== "") {
+      setIsInputNull(false);
+      setTitleValue(e.target.value);
+    } else {
+      setIsInputNull(true);
+    }
+  }
+
+  // Handle description change - capture description value
+  function handleDescriptionInputChange(e) {
+    setDescriptionValue(e.target.value);
+  }
+
+  // Add New Task to database/local storage
+  function handleAddNewTask() {
+    setData((prevData) => [
+      ...prevData,
+      {
+        id: prevData[prevData.length - 1].id + 1,
+        taskTitle: titleValue,
+        description: descriptionValue,
+      },
+    ]);
+    handlePopupMenu();
   }
 
   return (
@@ -48,8 +76,8 @@ const AddPageTask = ({ setAddTaskModal }) => {
             <input
               className="outline-none "
               type="text"
-              name=""
-              id=""
+              name="title"
+              id="title"
               placeholder="Title of the task"
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
@@ -64,9 +92,10 @@ const AddPageTask = ({ setAddTaskModal }) => {
           <input
             className="outline-none mt-1"
             type="text"
-            name=""
-            id=""
+            name="description"
+            id="description"
             placeholder="Description"
+            onChange={handleDescriptionInputChange}
           />
 
           <div className="flex gap-2 mt-2">
@@ -82,8 +111,10 @@ const AddPageTask = ({ setAddTaskModal }) => {
           >
             <span>Cancel</span>
           </button>
+
           <button
             className={`px-3 py-1 rounded-[5px] text-white  ${isInputNull ? "bg-[#eda59e] cursor-not-allowed" : "cursor-auto bg-[#d33322]"}`}
+            onClick={handleAddNewTask}
           >
             <span>Add Task</span>
           </button>
