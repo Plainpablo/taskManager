@@ -8,8 +8,8 @@ import { useData } from "../../../context/TaskDatabase";
 const AddPageTask = ({ setAddTaskModal }) => {
   const [focused, setFocused] = useState(false);
   const [isInputNull, setIsInputNull] = useState(true);
-  const [titleValue, setTitleValue] = useState();
-  const [descriptionValue, setDescriptionValue] = useState();
+  const [titleValue, setTitleValue] = useState("");
+  const [descriptionValue, setDescriptionValue] = useState("");
   const { isAddTaskOpen, setIsAddTaskOpen } = useModal();
   const { data, setData } = useData();
   const modalRef = useRef(null);
