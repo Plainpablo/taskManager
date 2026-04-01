@@ -102,7 +102,7 @@ export const EditPageTask = ({
           </button>
 
           <button
-            className={`px-3 py-1 rounded-[5px] text-white  ${isInputNull ? "bg-[#eda59e] cursor-not-allowed" : "cursor-auto bg-[#d33322]"}`}
+            className={`px-3 py-1 rounded-[5px] text-white  ${isInputNull ? "bg-[#eda59e] cursor-not-allowed" : "cursor-pointer bg-[#d33322]"}`}
             onClick={() =>
               handleUpdateTask(id, {
                 taskTitle: titleValue,

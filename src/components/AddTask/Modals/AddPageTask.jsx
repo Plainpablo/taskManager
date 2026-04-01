@@ -113,7 +113,7 @@ const AddPageTask = ({ setAddTaskModal }) => {
           </button>
 
           <button
-            className={`px-3 py-1 rounded-[5px] text-white  ${isInputNull ? "bg-[#eda59e] cursor-not-allowed" : "cursor-auto bg-[#d33322]"}`}
+            className={`px-3 py-1 rounded-[5px] text-white  ${isInputNull ? "bg-[#eda59e] cursor-not-allowed" : "bg-[#d33322] cursor-pointer"}`}
             onClick={handleAddNewTask}
           >
             <span>Add Task</span>
