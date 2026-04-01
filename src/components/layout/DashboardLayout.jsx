@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "../Menu/SideBar";
 import ContentArea from "./ContentArea";
-import AddTask from "../AddTask/Modals/AddTask";
+import AddTaskPopUp from "../AddTask/Modals/AddTaskPopUp";
 import { useModal } from "../../context/PopUpModalContext";
 import Search from "../Search/Search";
 import useSideBarMenu from "../../context/SideBarMenuContext";
@@ -34,7 +34,7 @@ const DashboardLayout = () => {
   return (
     <div className="dashboardLayout bg-[#FAFAFA]">
       {/* Pop ups */}
-      <AddTask />
+      <AddTaskPopUp />
       <Search />
       <div
         className={`grid ${sideBarOpen ? "grid-cols-[256px_1fr]" : "grid-cols-[0_1fr]"} h-full`}

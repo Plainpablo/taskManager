@@ -4,6 +4,7 @@ import DatePickerAction from "../Controls/DatePickerAction";
 import AttachmentAction from "../Controls/AttachmentAction";
 import Priority from "../Controls/Priority";
 import { useData } from "../../../context/TaskDatabase";
+import { PaperAirplaneIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export const EditPageTask = ({
   taskTitle,
@@ -29,6 +30,7 @@ export const EditPageTask = ({
       setTitleValue(e.target.value);
     } else {
       setIsInputNull(true);
+      setTitleValue("");
     }
   }
 
@@ -39,6 +41,7 @@ export const EditPageTask = ({
       setDescriptionValue(e.target.value);
     } else {
       setIsInputNull(true);
+      setDescriptionValue("");
     }
   }
 
@@ -66,16 +69,16 @@ export const EditPageTask = ({
               name="title"
               id="title"
               placeholder="Title of the task"
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
+              // onFocus={() => setFocused(true)}
+              // onBlur={() => setFocused(false)}
               onChange={handleInputChange}
               value={titleValue}
             />
-            {!focused && (
+            {/* {!focused && (
               <span className="absolute left-[-2px] animate-blink pointer-events-none top-[-8px] text-[22px]">
                 |
               </span>
-            )}
+            )} */}
           </div>
           <input
             className="outline-none mt-1"
@@ -98,7 +101,7 @@ export const EditPageTask = ({
             className="bg-[#0000000a] px-3 py-1 rounded-[5px]"
             onClick={() => setIsEditTask(false)}
           >
-            <span>Cancel</span>
+            <XMarkIcon className="size-3" />
           </button>
 
           <button
@@ -110,7 +113,7 @@ export const EditPageTask = ({
               })
             }
           >
-            <span>Add Task</span>
+            <PaperAirplaneIcon className="size-3" />
           </button>
         </div>
       </div>
