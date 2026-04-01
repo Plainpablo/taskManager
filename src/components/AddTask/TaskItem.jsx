@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { EditPageTask } from "./Modals/EditPageTask";
+import {TaskItemOptionsMenu} from "./TaskItemOptionsMenu"    
 
 function TaskItem({ taskTitle, description, id }) {
   const [isCheckHover, setIsCheckHover] = useState(false);
@@ -73,6 +74,8 @@ function TaskItem({ taskTitle, description, id }) {
           setIsEditTask={setIsEditTask}
         />
       )}
+      {/* Render More Oprions Menu */}
+      <TaskItemOptionsMenu/>
     </>
   );
 }
