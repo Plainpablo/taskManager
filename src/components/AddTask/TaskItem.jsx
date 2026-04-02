@@ -6,7 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { EditPageTask } from "./Modals/EditPageTask";
-import {TaskItemOptionsMenu} from "./TaskItemOptionsMenu"    
+import { TaskItemOptionsMenu } from "./TaskItemOptionsMenu";
 
 function TaskItem({ taskTitle, description, id }) {
   const [isCheckHover, setIsCheckHover] = useState(false);
@@ -24,7 +24,7 @@ function TaskItem({ taskTitle, description, id }) {
         <li
           onMouseEnter={() => setIsIteamHover(true)}
           onMouseLeave={() => setIsIteamHover(false)}
-          className="flex flex-col cursor-pointer"
+          className="flex flex-col cursor-pointer relative"
         >
           <div className="flex justify-between items-center  py-2">
             <div className="flex relative">
@@ -52,9 +52,11 @@ function TaskItem({ taskTitle, description, id }) {
                 <button onClick={handleEditTask}>
                   <PencilIcon className="size-[18px] text-[#666]" />
                 </button>
-                <button>
+                <button className="relative">
                   <EllipsisHorizontalIcon className="size-[18px] text-[#666]" />
                 </button>
+                {/* Render More Oprions Menu */}
+                <TaskItemOptionsMenu />
               </div>
             )}
           </div>
@@ -74,8 +76,6 @@ function TaskItem({ taskTitle, description, id }) {
           setIsEditTask={setIsEditTask}
         />
       )}
-      {/* Render More Oprions Menu */}
-      <TaskItemOptionsMenu/>
     </>
   );
 }
