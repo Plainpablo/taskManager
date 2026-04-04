@@ -38,7 +38,7 @@ export const TaskItemOptionsMenu = ({ isMoreOptions, setIsMoreOptions }) => {
   return (
     <div
       ref={moreOptionsRef}
-      className="bg-white shadow-[0_0_8px_#0000001f] rounded-[10px] py-[6px] max-w-[300px] w-full absolute z-10 top-[37px] right-[-47px]"
+      className="bg-white shadow-[0_0_8px_#0000001f] rounded-[10px] py-[6px] w-full max-w-[300px] absolute z-10 top-[37px] right-[-47px] "
     >
       {/* Edit button */}
       <div className="px-[6px]">
