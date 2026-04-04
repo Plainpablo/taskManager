@@ -12,9 +12,16 @@ function TaskItem({ taskTitle, description, id }) {
   const [isCheckHover, setIsCheckHover] = useState(false);
   const [isIteamHover, setIsIteamHover] = useState(false);
   const [isEditTask, setIsEditTask] = useState(false);
+  const [isMoreOptions, setIsMoreOptions] = useState(false);
 
   function handleEditTask(e) {
     setIsEditTask(true);
+  }
+
+  // Handle more options button
+  function handleMoreOptions() {
+    setIsMoreOptions(true);
+    setIsIteamHover(false);
   }
 
   return (
@@ -47,18 +54,36 @@ function TaskItem({ taskTitle, description, id }) {
               </div>
             </div>
 
-            {isIteamHover && (
-              <div className="flex gap-2 justify-center">
-                <button onClick={handleEditTask}>
-                  <PencilIcon className="size-[18px] text-[#666]" />
-                </button>
-                <button className="relative">
-                  <EllipsisHorizontalIcon className="size-[18px] text-[#666]" />
-                </button>
-                {/* Render More Oprions Menu */}
-                <TaskItemOptionsMenu />
-              </div>
-            )}
+            {/* Render edit and more option Icons */}
+            <>
+              {isIteamHover && (
+                <div className="h-6 grid-cols-[24px_24px] grid gap-2 justify-center items-center">
+                  <button
+                    onClick={handleEditTask}
+                    className="flex items-center justify-center h-6 hover:bg-[#eee] hover:rounded"
+                  >
+                    <PencilIcon className="size-[18px] text-[#666]" />
+                  </button>
+                  <button
+                    onClick={handleMoreOptions}
+                    className="relative flex items-center justify-center h-6 hover:bg-[#eee] hover:rounded"
+                  >
+                    <EllipsisHorizontalIcon className="size-[18px] text-[#666]" />
+                  </button>
+                </div>
+              )}
+              {isMoreOptions && (
+                <div className="flex gap-2 justify-center">
+                  <button className="relative">
+                    <EllipsisHorizontalIcon className="size-[18px] text-[#666]" />
+                  </button>
+                  <TaskItemOptionsMenu
+                    isMoreOptions={isMoreOptions}
+                    setIsMoreOptions={setIsMoreOptions}
+                  />
+                </div>
+              )}
+            </>
           </div>
           <div className="flex">
             <span className="w-[26px]"></span>
