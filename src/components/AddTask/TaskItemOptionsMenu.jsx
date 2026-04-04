@@ -40,8 +40,9 @@ export const TaskItemOptionsMenu = ({ isMoreOptions, setIsMoreOptions }) => {
       ref={moreOptionsRef}
       className="bg-white shadow-[0_0_8px_#0000001f] rounded-[10px] py-[6px] max-w-[300px] w-full absolute z-10 top-[37px] right-[-47px]"
     >
-      <div>
-        <div className="flex items-center justify-between px-[6px] mx-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
+      {/* Edit button */}
+      <div className="px-[6px]">
+        <button className="w-full flex items-center justify-between px-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px] cursor-pointer">
           <div className="flex items-center gap-[10px]">
             <PencilIcon className="size-6 text-[#666]" />
             <span className="text-[#202020]">Edit</span>
@@ -49,11 +50,12 @@ export const TaskItemOptionsMenu = ({ isMoreOptions, setIsMoreOptions }) => {
           <kbd className="px-[5px] mx-[1px] text-[#666] font-normal">
             Ctrl E
           </kbd>
-        </div>
+        </button>
       </div>
       <hr className="my-[6px]" />
+
+      {/* Date and Priority */}
       <div>
-        {/* Date */}
         <div className="flex flex-col px-[6px] mx-[6px] min-h-9">
           <div className="flex justify-between items-center">
             <span className="text-[#202020] font-semibold">Date</span>
@@ -100,52 +102,58 @@ export const TaskItemOptionsMenu = ({ isMoreOptions, setIsMoreOptions }) => {
           </div>
         </div>
       </div>
-
       <hr className="my-[6px]" />
-      <div>
-        <div className="flex justify-between item-center px-[6px] mx-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
+
+      {/* Deadline and reminders */}
+      <div className="px-[6px]">
+        <button className="w-full flex justify-between item-center px-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
           <div className="flex items-center gap-3">
             <StarIcon className="size-6 text-[#f48318]" />
             <span className="text-[#202020]">Deadline</span>
           </div>
           <kbd className="text-[#666] font-normal">D</kbd>
-        </div>
+        </button>
 
-        <div className="flex justify-between item-center px-[6px] mx-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
+        <button className="w-full flex justify-between item-center px-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
           <div className="flex items-center gap-3">
             <ClockIcon className="size-6 text-[#666]" />
             <span className="text-[#202020]">Reminders</span>
           </div>
-        </div>
+        </button>
       </div>
       <hr className="my-[6px]" />
-      <div>
-        <div className="flex justify-between item-center px-[6px] mx-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
+
+      {/* Duplicate and copy link to task */}
+      <div className="px-[6px] ">
+        <button className="w-full flex justify-between item-center px-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
           <div className="flex items-center gap-3">
             <DocumentDuplicateIcon className="size-6 text-[#666]" />
             <span className="text-[#202020]">Duplicate</span>
           </div>
-        </div>
+        </button>
 
-        <div className="flex justify-between items-center px-[6px] mx-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
+        <button className="w-full flex justify-between items-center px-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
           <div className="flex items-center gap-3">
             <LinkIcon className="size-6 text-[#666]" />
             <span className="text-[#202020]">Copy link to task</span>
           </div>
           <kbd className="text-[#666] font-normal">Ctrl C</kbd>
-        </div>
+        </button>
       </div>
       <hr className="my-[6px]" />
 
-      <div className="flex justify-between items-center px-[6px] mx-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
-        <div
+      {/* Dlete */}
+      <div className="w-full flex justify-between items-center px-[6px] min-h-9">
+        <button
           onClick={() => setIsMoreOptions(false)}
-          className="flex justify-start items-center gap-3"
+          className="w-full flex justify-between items-center px-[6px] hover:bg-[#eee] hover:rounded-[5px] min-h-9"
         >
-          <TrashIcon className="size-6 text-[#dc4c3e]" />
-          <span className="text-[#dc4c3e] font-normal">Delete</span>
-        </div>
-        <kbd className="text-[#666] font-normal">Delete</kbd>
+          <div className="flex gap-3">
+            <TrashIcon className="size-6 text-[#dc4c3e]" />
+            <span className="text-[#dc4c3e] font-normal">Delete</span>
+          </div>
+          <kbd className="text-[#666] font-normal">Delete</kbd>
+        </button>
       </div>
     </div>
   );

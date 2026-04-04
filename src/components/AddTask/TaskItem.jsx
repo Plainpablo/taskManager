@@ -31,7 +31,7 @@ function TaskItem({ taskTitle, description, id }) {
         <li
           onMouseEnter={() => setIsIteamHover(true)}
           onMouseLeave={() => setIsIteamHover(false)}
-          className="flex flex-col cursor-pointer relative"
+          className="flex flex-col relative"
         >
           <div className="flex justify-between items-center  py-2">
             <div className="flex relative">
