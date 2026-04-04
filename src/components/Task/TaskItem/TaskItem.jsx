@@ -5,7 +5,7 @@ import {
   PencilIcon,
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { EditPageTask } from "../../AddTask/Modals/EditPageTask";
+import { EditPageTask } from "../../Task/EditTask/EditPageTask";
 import { TaskItemOptionsMenu } from "./TaskItemOptionsMenu";
 
 function TaskItem({ taskTitle, description, id }) {

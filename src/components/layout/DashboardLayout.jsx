@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "../Menu/SideBar";
 import ContentArea from "./ContentArea";
-import AddTaskPopUp from "../AddTask/Modals/AddTaskPopUp";
+import AddTaskPopUp from "../Task/AddTask/Modals/AddTaskPopUp";
 import { useModal } from "../../context/PopUpModalContext";
 import Search from "../Search/Search";
 import useSideBarMenu from "../../context/SideBarMenuContext";
 
 const DashboardLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const {sideBarOpen, setSideBarOpen, hideOpenIcon, setHideOpenIcon} = useSideBarMenu();
-
+  const { sideBarOpen, setSideBarOpen, hideOpenIcon, setHideOpenIcon } =
+    useSideBarMenu();
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 749px)");

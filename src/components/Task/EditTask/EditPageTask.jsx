@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useModal } from "../../../context/PopUpModalContext";
-import DatePickerAction from "../Controls/DatePickerAction";
-import AttachmentAction from "../Controls/AttachmentAction";
-import Priority from "../Controls/Priority";
+import DatePickerAction from "../AddTask/Controls/DatePickerAction";
+import AttachmentAction from "../AddTask/Controls/AttachmentAction";
+import Priority from "../AddTask/Controls/Priority";
 import { useData } from "../../../context/TaskDatabase";
 import { PaperAirplaneIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
