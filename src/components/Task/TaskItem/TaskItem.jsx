@@ -6,7 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { EditPageTask } from "../../Task/EditTask/EditPageTask";
-import { TaskItemOptionsMenu } from "./TaskItemOptionsMenu";
+import { TaskItemOptionsMenu } from "./MoreOptions/TaskItemOptionsMenu";
 
 function TaskItem({ taskTitle, description, id }) {
   const [isCheckHover, setIsCheckHover] = useState(false);
@@ -79,6 +79,7 @@ function TaskItem({ taskTitle, description, id }) {
                     <EllipsisHorizontalIcon className="size-[25px] text-[#666]" />
                   </button>
                   <TaskItemOptionsMenu
+                    handleEditTask={handleEditTask}
                     isMoreOptions={isMoreOptions}
                     setIsMoreOptions={setIsMoreOptions}
                   />
