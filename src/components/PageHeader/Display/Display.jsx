@@ -1,13 +1,17 @@
 import {
+  ChevronDownIcon,
+  QuestionMarkCircleIcon,
   QueueListIcon,
   RectangleGroupIcon,
   RectangleStackIcon,
 } from "@heroicons/react/24/outline";
 import { ArrowFatUp } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
+import { LayoutSettings } from "./Modals/LayoutSettings";
 
 export const Display = () => {
   const [isDisplayHover, setIsDisplayHover] = useState(false);
+  const [isDisplay, setIsDisplay] = useState(true);
   const displayRef = useRef(null);
   function handleDisplayHover() {
     setIsDisplayHover(true);
@@ -44,6 +48,9 @@ export const Display = () => {
           </div>
         </div>
       )}
+
+      {/* Render layout settings */}
+      {isDisplay && <LayoutSettings />}
     </button>
   );
 };

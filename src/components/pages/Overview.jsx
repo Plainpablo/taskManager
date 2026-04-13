@@ -1,10 +1,8 @@
 import React from 'react'
-import { PageHeader } from '../UI/PageHeader/PageHeader'
 
 const Overview = () => {
   return (
     <>
-    <PageHeader />
      OERVIEW PAGE
     </>
   )

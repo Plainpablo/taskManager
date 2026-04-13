@@ -1,9 +1,8 @@
 import { PlusIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import bgImage from "../../assets/images/vacation-vector.png";
 import { useState } from "react";
-import AddPageTask from "../AddTask/Modals/AddPageTask";
-import TaskItem from "../AddTask/TaskItem";
-import { PageHeader } from "../UI/PageHeader/PageHeader";
+import AddPageTask from "../Task/AddTask/Modals/AddPageTask";
+import TaskItem from "../Task/TaskItem/TaskItem";
 import { useData } from "../../context/TaskDatabase";
 
 const Today = () => {

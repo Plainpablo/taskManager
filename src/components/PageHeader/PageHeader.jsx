@@ -1,6 +1,6 @@
 import CloseSideBarMenu from "../../Menu/CloseSideBarMenu"
 import ConnectCalender from "./ConnectCalender/ConnectCalender"
-import { Display } from "./Display"
+import { Display } from "./Display/Display"
 
 export const PageHeader = () => {
     return(
