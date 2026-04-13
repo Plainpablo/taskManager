@@ -5,6 +5,7 @@ import Task from "../Pages/Task";
 import Message from "../Pages/Message";
 import { usePage } from "../../context/PageContext";
 import Today from "../Pages/Today";
+import { PageHeader } from "../UI/PageHeader/PageHeader";
 
 const pages = {
   Today: Today,
@@ -20,11 +21,12 @@ const ContentArea = ({ isMobile, sideBarOpen }) => {
   const CurrentPage = pages[currentPage];
 
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full h-screen relative flex flex-col">
+        <PageHeader />
       <div
         className={`overlay bg-[#999] w-full h-screen absolute z-10 ${isMobile && sideBarOpen ? "flex" : "hidden"}`}
       ></div>
-      {<CurrentPage />}
+        {<CurrentPage />}
     </div>
   );
 };

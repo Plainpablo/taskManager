@@ -3,7 +3,7 @@ import bgImage from "../../assets/images/vacation-vector.png";
 import { useState } from "react";
 import AddPageTask from "../AddTask/Modals/AddPageTask";
 import TaskItem from "../AddTask/TaskItem";
-import { PageHeader } from "../UI/PageHeader";
+import { PageHeader } from "../UI/PageHeader/PageHeader";
 import { useData } from "../../context/TaskDatabase";
 
 const Today = () => {
@@ -26,8 +26,7 @@ const Today = () => {
   const { data } = useData();
 
   return (
-    <div className="flex flex-col">
-      <PageHeader />
+    <div className="flex flex-col max-w-[800px] w-full mx-auto">
       <div className="flex mx-14 mb-3">
         <h1 className="text-2xl font-bold">Today</h1>
       </div>

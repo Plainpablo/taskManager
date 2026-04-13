@@ -1,4 +1,4 @@
-import { PageHeader } from '../UI/PageHeader'
+import { PageHeader } from '../UI/PageHeader/PageHeader'
 
 const Message = () => {
   return (
