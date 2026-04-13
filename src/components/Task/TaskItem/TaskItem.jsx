@@ -5,8 +5,8 @@ import {
   PencilIcon,
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { EditPageTask } from "./Modals/EditPageTask";
-import { TaskItemOptionsMenu } from "./TaskItemOptionsMenu";
+import { EditPageTask } from "../../Task/EditTask/EditPageTask";
+import { TaskItemOptionsMenu } from "./MoreOptions/TaskItemOptionsMenu";
 
 function TaskItem({ taskTitle, description, id }) {
   const [isCheckHover, setIsCheckHover] = useState(false);
@@ -38,7 +38,7 @@ function TaskItem({ taskTitle, description, id }) {
               {isIteamHover && (
                 <div className="flex absolute left-[-24px]">
                   <button>
-                    <EllipsisVerticalIcon className="w-[18px] text-[#666]" />
+                    <EllipsisVerticalIcon className="w-[25px] text-[#666]" />
                   </button>
                 </div>
               )}
@@ -56,28 +56,30 @@ function TaskItem({ taskTitle, description, id }) {
 
             {/* Render edit and more option Icons */}
             <>
-              {isIteamHover && (
+              {isIteamHover && !isMoreOptions && (
                 <div className="h-6 grid-cols-[24px_24px] grid gap-2 justify-center items-center">
                   <button
                     onClick={handleEditTask}
-                    className="flex items-center justify-center h-6 hover:bg-[#eee] hover:rounded"
+                    className="flex items-center justify-center h-6 hover:bg-[#eee] hover:rounded-[3px]"
                   >
                     <PencilIcon className="size-[18px] text-[#666]" />
                   </button>
                   <button
                     onClick={handleMoreOptions}
-                    className="relative flex items-center justify-center h-6 hover:bg-[#eee] hover:rounded"
+                    className="relative flex items-center justify-center h-6 hover:bg-[#eee] hover:rounded-[3px]"
                   >
-                    <EllipsisHorizontalIcon className="size-[18px] text-[#666]" />
+                    <EllipsisHorizontalIcon className="size-[25px] text-[#666]" />
                   </button>
                 </div>
               )}
               {isMoreOptions && (
-                <div className="flex gap-2 justify-center">
-                  <button className="relative">
-                    <EllipsisHorizontalIcon className="size-[18px] text-[#666]" />
+                <div className="h-6 grid-cols-[24px_24px] grid gap-2 justify-center items-center">
+                  <div></div>
+                  <button className="size-6 bg-[#eee] rounded-[3px] flex justify-center items-center">
+                    <EllipsisHorizontalIcon className="size-[25px] text-[#666]" />
                   </button>
                   <TaskItemOptionsMenu
+                    handleEditTask={handleEditTask}
                     isMoreOptions={isMoreOptions}
                     setIsMoreOptions={setIsMoreOptions}
                   />

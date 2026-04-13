@@ -13,9 +13,15 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/outline";
 import { FlagIcon as FlagSolidIcon } from "@heroicons/react/24/solid";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { MoreOptionsReminderModal } from "./MoreOptionsReminderModal";
 
-export const TaskItemOptionsMenu = ({ isMoreOptions, setIsMoreOptions }) => {
+export const TaskItemOptionsMenu = ({
+  isMoreOptions,
+  setIsMoreOptions,
+  handleEditTask,
+}) => {
+  const [isRemindersModal, setIsRemindersModal] = useState(false);
   const moreOptionsRef = useRef(null);
   useEffect(() => {
     function handleClickOutSide(e) {
@@ -35,14 +41,23 @@ export const TaskItemOptionsMenu = ({ isMoreOptions, setIsMoreOptions }) => {
     };
   }, [isMoreOptions]);
 
+  // Edit option
+  function handleEditOption() {
+    setIsMoreOptions(false);
+    handleEditTask();
+  }
+
   return (
     <div
       ref={moreOptionsRef}
-      className="bg-white shadow-[0_0_8px_#0000001f] rounded-[10px] py-[6px] max-w-[300px] w-full absolute z-10 top-[37px] right-[-47px]"
+      className="bg-white shadow-[0_0_8px_#0000001f] rounded-[10px] py-[6px] w-full max-w-[300px] absolute z-10 top-[37px] right-[-47px] "
     >
       {/* Edit button */}
       <div className="px-[6px]">
-        <button className="w-full flex items-center justify-between px-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px] cursor-pointer">
+        <button
+          onClick={() => handleEditOption()}
+          className="w-full flex items-center justify-between px-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px] cursor-pointer"
+        >
           <div className="flex items-center gap-[10px]">
             <PencilIcon className="size-6 text-[#666]" />
             <span className="text-[#202020]">Edit</span>
@@ -114,11 +129,15 @@ export const TaskItemOptionsMenu = ({ isMoreOptions, setIsMoreOptions }) => {
           <kbd className="text-[#666] font-normal">D</kbd>
         </button>
 
-        <button className="w-full flex justify-between item-center px-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]">
+        <button
+          onClick={() => setIsRemindersModal(true)}
+          className="w-full flex justify-between item-center px-[6px] min-h-9 hover:bg-[#eee] hover:rounded-[5px]"
+        >
           <div className="flex items-center gap-3">
             <ClockIcon className="size-6 text-[#666]" />
             <span className="text-[#202020]">Reminders</span>
           </div>
+          {isRemindersModal && <MoreOptionsReminderModal />}
         </button>
       </div>
       <hr className="my-[6px]" />
