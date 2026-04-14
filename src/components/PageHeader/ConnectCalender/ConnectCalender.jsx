@@ -1,5 +1,5 @@
 import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import ConnectToCalenderImg from "../../../../assets/images/connectToCalender.png";
+import ConnectToCalenderImg from "../../../assets/images/connectToCalender.png";
 import { Triangle } from "phosphor-react";
 import { useState } from "react";
 

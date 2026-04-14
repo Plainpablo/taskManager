@@ -1,4 +1,4 @@
-import CloseSideBarMenu from "../../Menu/CloseSideBarMenu"
+import CloseSideBarMenu from "../../components/Menu/CloseSideBarMenu"
 import ConnectCalender from "./ConnectCalender/ConnectCalender"
 import { Display } from "./Display/Display"
 

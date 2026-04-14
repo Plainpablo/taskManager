@@ -5,7 +5,7 @@ import Task from "../Pages/Task";
 import Message from "../Pages/Message";
 import { usePage } from "../../context/PageContext";
 import Today from "../Pages/Today";
-import { PageHeader } from "../UI/PageHeader/PageHeader";
+import { PageHeader } from "../PageHeader/PageHeader";
 
 const pages = {
   Today: Today,
