@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { ArrowFatUp } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
-import { LayoutSettings } from "./Modals/LayoutSettings";
+import { DisplaySettingsModal } from "./Modals/DisplaySettingsModal";
 
 export const Display = () => {
   const [isDisplayHover, setIsDisplayHover] = useState(false);
@@ -50,7 +50,7 @@ export const Display = () => {
       )}
 
       {/* Render layout settings */}
-      {isDisplay && <LayoutSettings />}
+      {isDisplay && <DisplaySettingsModal />}
     </button>
   );
 };

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const CustomDropList = ({ sortOptions, width, height }) => {
   const [currentOption, setCurrentOption] = useState(sortOptions[0]);
-  const [isDropDownOpen, setIsDropDownOpen] = useState(true);
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const dropDownRef = useRef(null);
 
   // Display clicked option and close drop down
