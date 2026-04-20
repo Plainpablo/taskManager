@@ -92,7 +92,7 @@ export const DisplaySettingsModal = () => {
 
         <div className="border-b-[#eee] border-b-[1px]">
           <DisplayLayout />
-          
+
         </div>
 
         <div>
@@ -110,7 +110,7 @@ export const DisplaySettingsModal = () => {
 
             {/* Render Sort Options */}
             {isSortOptionsVisible && sortOptions.map((option, index) => (
-              <div className="flex justify-between items-center py-[2px] px-[6px]">
+              <div key={index} className="flex justify-between items-center py-[2px] px-[6px]">
                 <span className="text-[#202020] font-normal text-sm">
                   {option.title}
                 </span>
@@ -139,7 +139,7 @@ export const DisplaySettingsModal = () => {
 
             {/* Render Filter Options */}
             {isFilterOptionsVisible && filterOptions.map((option, index) => (
-              <div className="flex justify-between items-center py-[2px] px-[6px]">
+              <div key={index} className="flex justify-between items-center py-[2px] px-[6px]">
                 <span className="text-[#202020] font-normal text-sm">
                   {option.title}
                 </span>
