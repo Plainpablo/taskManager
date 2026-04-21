@@ -11,24 +11,52 @@ import { DisplaySettingsModal } from "./Modals/DisplaySettingsModal";
 
 export const Display = () => {
   const [isDisplayHover, setIsDisplayHover] = useState(false);
-  const [isDisplay, setIsDisplay] = useState(true);
+  const [isDisplay, setIsDisplay] = useState(false);
   const displayRef = useRef(null);
   function handleDisplayHover() {
     setIsDisplayHover(true);
   }
+  function handleDisplayClick() {
+    setIsDisplayHover(false);
+    setIsDisplay(true);
+  }
+
+  useEffect(() => {
+    function handleOutSideClick(event) {
+      if (displayRef.current && !displayRef.current.contains(event.target)) {
+        setIsDisplay(false);
+      }
+    }
+    if (isDisplay) {
+      document.addEventListener("click", handleOutSideClick);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleOutSideClick);
+    };
+  }, [isDisplay]);
+
   return (
-    <button
+    <div
       ref={displayRef}
       onMouseEnter={handleDisplayHover}
       onMouseLeave={() => setIsDisplayHover(false)}
-      className="group flex gap-[6px] justify-center items-center px-3 hover:bg-[#0000000a] h-8 rounded-[5px] relative"
+      onClick={handleDisplayClick}
+      className="group  flex gap-[6px] justify-center items-center px-3 hover:bg-[#0000000a] h-8 rounded-[5px] relative"
     >
-      <RectangleStackIcon className="size-5 text-[#666]" />
-      <span className="text-[#666] text-sm font-semibold group-hover:text-black">
-        Display
-      </span>
+      {isDisplayHover || isDisplay ? (
+        <>
+          <RectangleStackIcon className="size-5 text-black cursor-pointer" />
+          <span className="text-sm font-semibold text-black">Display</span>
+        </>
+      ) : (
+        <>
+          <RectangleStackIcon className="size-5 text-[#666] cursor-pointer" />
+          <span className="text-[#666] text-sm font-semibold">Display</span>
+        </>
+      )}
 
-      {isDisplayHover && (
+      {isDisplayHover && !isDisplay && (
         <div className="bg-[#282828] rounded-[5px] w-max absolute top-8 right-0 px-2 py-1">
           <div className="flex flex-col p-2">
             <span className="font-bold text-sm text-white text-left  pb-2 border-b-[1px] border-[#3d3d3d]">
@@ -51,6 +79,6 @@ export const Display = () => {
 
       {/* Render layout settings */}
       {isDisplay && <DisplaySettingsModal />}
-    </button>
+    </div>
   );
 };

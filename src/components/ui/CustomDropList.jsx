@@ -29,7 +29,7 @@ const CustomDropList = ({ sortOptions, width, height }) => {
 
   return (
     <div
-      className={`${width} ${height} border-[#e6e6e6] border-[1px] rounded-[5px] flex relative`}
+      className={`${width} ${height} cursor-pointer border-[#e6e6e6] border-[1px] rounded-[5px] flex relative`}
     >
       {/* Current option */}
       <div
