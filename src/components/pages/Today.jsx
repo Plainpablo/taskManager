@@ -4,11 +4,13 @@ import { useState } from "react";
 import AddPageTask from "../Task/AddTask/Modals/AddPageTask";
 import TaskItem from "../Task/TaskItem/TaskItem";
 import { useData } from "../../context/TaskDatabase";
+import { AddCommenttoTaskModal } from "../Task/TaskItem/AddCommentToTask/AddCommenttoTaskModal";
 
 const Today = () => {
   const [isHover, setIsHover] = useState(false);
   const [addTaskModal, setAddTaskModal] = useState(false);
   const [isTaskListEmpty, setIsTaskListEmpty] = useState(false);
+  const [isAddComment, setIsAddComment] = useState(true);
 
   function handleAddTaskHover(value) {
     value === "MouseEnter"
@@ -48,6 +50,8 @@ const Today = () => {
           </ul>
         </div>
       }
+      {/* Render comment modal on btn click */}
+      {isAddComment && <AddCommenttoTaskModal />}
       {!addTaskModal && (
         <>
           <div className="px-14">

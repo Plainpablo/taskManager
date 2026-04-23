@@ -3,12 +3,15 @@ import {
   QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import CustomDropList from "../../../UI/CustomDropList";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { DisplayLayout } from "../DisplayLayout";
+import { useDisplayModal } from "../../../../context/DisplayModalContext";
 
 export const DisplaySettingsModal = ({ isDisplay, setIsDisplay }) => {
   const [isSortOptionsVisible, setIsSortOptionVisible] = useState(true);
   const [isFilterOptionsVisible, setIsFilterOptionVisible] = useState(true);
+  const [isResetOptions, setIsResetOptions] = useState(false);
+  const { isLayoutOption, setIsLayoutOption } = useDisplayModal();
   const sortOptions = [
     {
       title: "Grouping",
@@ -82,11 +85,14 @@ export const DisplaySettingsModal = ({ isDisplay, setIsDisplay }) => {
     },
   ];
 
+  function handleResetOptions() {
+    setIsLayoutOption(0);
+  }
 
   return (
-    <div
-      className="absolute top-8 right-0 bg-white w-max z-50 rounded-[10px] py-[6px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.1),0px_8px_18px_4px_rgba(0,0,0,0.05)]"
-    >
+    <div 
+    onClick={(e) => e.stopPropagation()}
+    className="absolute top-8 right-0 bg-white w-max z-50 rounded-[10px] py-[6px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.1),0px_8px_18px_4px_rgba(0,0,0,0.05)]">
       <div className="w-[300px] flex flex-col gap-[6px]">
         <div className="flex justify-between items-center py-[2px] px-[12px]">
           <span className="text-[#202020] font-semibold text-sm">Layout</span>
@@ -163,6 +169,17 @@ export const DisplaySettingsModal = ({ isDisplay, setIsDisplay }) => {
           </div>
         </div>
       </div>
+      {/* Reset to default */}
+      {isLayoutOption !== 0 && (
+        <div
+          onClick={handleResetOptions}
+          className="border-b-[#eee] border-t-[1px] mt-[6px] pt-[6px]"
+        >
+          <span className="text-[#dc4c3e] text-sm font-semibold">
+            Reset all
+          </span>
+        </div>
+      )}
     </div>
   );
 };

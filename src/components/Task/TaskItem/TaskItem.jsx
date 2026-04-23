@@ -7,6 +7,7 @@ import {
 import { useState } from "react";
 import { EditPageTask } from "../../Task/EditTask/EditPageTask";
 import { TaskItemOptionsMenu } from "./MoreOptions/TaskItemOptionsMenu";
+import { ChatCentered } from "phosphor-react";
 
 function TaskItem({ taskTitle, description, id }) {
   const [isCheckHover, setIsCheckHover] = useState(false);
@@ -24,6 +25,11 @@ function TaskItem({ taskTitle, description, id }) {
     setIsIteamHover(false);
   }
 
+  // Handle add comment to task
+  function handleAddComment() {
+    
+  }
+
   return (
     <>
       {/* Render Tasks  */}
@@ -33,7 +39,7 @@ function TaskItem({ taskTitle, description, id }) {
           onMouseLeave={() => setIsIteamHover(false)}
           className="flex flex-col relative"
         >
-          <div className="flex justify-between items-center  py-2">
+          <div className="flex justify-between items-center py-2">
             <div className="flex relative">
               {isIteamHover && (
                 <div className="flex absolute left-[-24px]">
@@ -57,13 +63,22 @@ function TaskItem({ taskTitle, description, id }) {
             {/* Render edit and more option Icons */}
             <>
               {isIteamHover && !isMoreOptions && (
-                <div className="h-6 grid-cols-[24px_24px] grid gap-2 justify-center items-center">
+                <div className="h-6 grid-cols-[24px_24px_24px] grid gap-2 justify-center items-center">
+                  {/* Edit */}
                   <button
                     onClick={handleEditTask}
                     className="flex items-center justify-center h-6 hover:bg-[#eee] hover:rounded-[3px]"
                   >
                     <PencilIcon className="size-[18px] text-[#666]" />
                   </button>
+                  {/* Comment on task */}
+                  <button
+                    onClick={handleAddComment}
+                    className="flex items-center justify-center h-6 hover:bg-[#eee] hover:rounded-[3px]"
+                  >
+                    <ChatCentered size={18} color="#666" />
+                  </button>
+                    {/* More Options*/}
                   <button
                     onClick={handleMoreOptions}
                     className="relative flex items-center justify-center h-6 hover:bg-[#eee] hover:rounded-[3px]"
@@ -72,6 +87,9 @@ function TaskItem({ taskTitle, description, id }) {
                   </button>
                 </div>
               )}
+           
+
+              {/* Render More Options on moreOption btn click */}
               {isMoreOptions && (
                 <div className="h-6 grid-cols-[24px_24px] grid gap-2 justify-center items-center">
                   <div></div>

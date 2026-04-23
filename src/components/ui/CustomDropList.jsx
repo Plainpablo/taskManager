@@ -45,6 +45,7 @@ const CustomDropList = ({ sortOptions, width, height }) => {
       {isDropDownOpen && (
         <div
           ref={dropDownRef}
+          onClick={(e) => e.stopPropagation()}
           className="flex flex-col bg-white absolute top-7 max-h-[280px] overflow-auto p-[6px] border-[#eee] border-[1px] shadow-[0px_4px_10px_0px_#0000001a,0px_8px_18px_4px_#0000000d)] w-full rounded-[10px] overflow-x-hidden z-40"
         >
           {sortOptions.map((option, index) =>
@@ -52,7 +53,7 @@ const CustomDropList = ({ sortOptions, width, height }) => {
               <div
                 key={index}
                 className="flex gap-2 items-center px-[6px] py-1 hover:bg-[#eee] hover:rounded-[5px]"
-                onClick={() => setIsDropDownOpen(false)}
+                // onClick={() => setIsDropDownOpen(false)}
               >
                 <Check size={16} color="#202020" weight="bold" />
                 <span className="text-sm text-[#202020] font-normal">

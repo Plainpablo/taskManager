@@ -1,8 +1,9 @@
 import { List, Calendar } from "phosphor-react";
 import { useState } from "react";
+import { useDisplayModal } from "../../../context/DisplayModalContext";
 
 export const DisplayLayout = () => {
-  const [isLayoutOption, setIsLayoutOption] = useState(0);
+  const{isLayoutOption, setIsLayoutOption} = useDisplayModal();
 
   const layoutOptions = [
     { title: "List", icon: List, iconStyle: ""},
@@ -10,7 +11,7 @@ export const DisplayLayout = () => {
     { title: "Calender", icon: Calendar, iconStyle: "" },
   ];
   return (
-    <div className="p-1 bg-[#f5f5f5] rounded-[10px] grid grid-cols-3 m-[6px]">
+    <div className="p-1 bg-[#f5f5f5] rounded-[10px] grid grid-cols-3 m-[6px] mb-3">
       {layoutOptions.map((option, index) =>
         isLayoutOption === index ? (
           <label

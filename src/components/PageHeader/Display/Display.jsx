@@ -79,6 +79,7 @@ export const Display = () => {
 
       {/* Render layout settings */}
       {isDisplay && <DisplaySettingsModal />}
+
     </div>
   );
 };
