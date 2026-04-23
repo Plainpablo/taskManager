@@ -11,17 +11,37 @@ import {
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { PuzzlePiece } from "phosphor-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const AddCommenttoTaskModal = () => {
   const [isCommentNull, setIsCommentNull] = useState(true);
+  const [isCommentClicked, setIsCommentClicked] = useState(false);
+  const [rightColInboxHover, setRightColInboxHover] = useState(false);
+  const commentRef = useRef(null);
 
   function handleInputValue(e) {
     e.target.value === "" ? setIsCommentNull(true) : setIsCommentNull(false);
   }
 
+  function handleComment() {
+    setIsCommentClicked(true);
+  }
   function handleCloseComment() {}
 
+  // Comment box outside click
+  useEffect(() => {
+    function handleOutSideClick(e) {
+      if (commentRef.current && !commentRef.current.contains(e.target)) {
+        setIsCommentClicked(false);
+      }
+    }
+    if (isCommentClicked) {
+      document.addEventListener("click", handleOutSideClick);
+    }
+    return () => {
+      document.removeEventListener("click", handleOutSideClick);
+    };
+  }, [isCommentClicked]);
   return (
     <div className="w-full h-screen bg-[rgba(0,0,0,.4)] fixed z-[90] top-0 left-0 flex items-center justify-center px-[32px] py-[64px]">
       <div className="bg-white shadow-[0_2px_8px_rgba(0,0,0,0.16)] max-w-[864px] w-full h-full rounded-[10px]">
@@ -86,8 +106,14 @@ export const AddCommenttoTaskModal = () => {
             </div>
 
             {/* Add comment */}
-            <div className="pl-[24px] w-full">
-              <div className="mt-2 p-4 border-[1px] border-[#e6e6e6] rounded-[10px] w-full flex flex-col">
+            <div
+              ref={commentRef}
+              onClick={handleComment}
+              className="pl-[24px] w-full"
+            >
+              <div
+                className={`mt-2 p-4 border-[1px] ${isCommentClicked && "border-[#b8b8b8]"} border-[#e6e6e6] rounded-[10px] w-full flex flex-col`}
+              >
                 <div className="flex items-start min-h-[50px] max-h-[200px]">
                   <input
                     className="outline-none"
@@ -131,7 +157,110 @@ export const AddCommenttoTaskModal = () => {
             </div>
           </div>
 
-          <div className="bg-[#fcfaf8]">Right</div>
+          <div className="bg-[#fcfaf8] h-full flex flex-col items-start p-4">
+            <div className="px-2 flex flex-col items-start w-full">
+              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
+                Project
+              </span>
+              <div
+                onMouseEnter={() => setRightColInboxHover(true)}
+                onMouseLeave={() => setRightColInboxHover(false)}
+                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+              >
+                <div className="flex items-center pl-[8px] w-full">
+                  <InboxIcon className="size-4 mr-[8px] text-[#666]" />
+                  <span className="text-[#666]">Inbox</span>
+                </div>
+                {rightColInboxHover && (
+                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
+                )}
+              </div>
+              <hr className="my-2 border-b-[#eee] w-full ml-2" />
+            </div>
+
+                {/* Date */}
+            <div className="px-2 flex flex-col items-start w-full">
+              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
+                Date
+              </span>
+              <div
+                onMouseEnter={() => setRightColInboxHover(true)}
+                onMouseLeave={() => setRightColInboxHover(false)}
+                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+              >
+                <div className="flex items-center pl-[8px] w-full">
+                  <InboxIcon className="size-4 mr-[8px] text-[#666]" />
+                  <span className="text-[#666]">Inbox</span>
+                </div>
+                {rightColInboxHover && (
+                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
+                )}
+              </div>
+              <hr className="my-2 border-b-[#eee] w-full ml-2" />
+            </div>
+
+                {/* Priority */}
+            <div className="px-2 flex flex-col items-start w-full">
+              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
+                Priority
+              </span>
+              <div
+                onMouseEnter={() => setRightColInboxHover(true)}
+                onMouseLeave={() => setRightColInboxHover(false)}
+                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+              >
+                <div className="flex items-center pl-[8px] w-full">
+                  <InboxIcon className="size-4 mr-[8px] text-[#666]" />
+                  <span className="text-[#666]">Inbox</span>
+                </div>
+                {rightColInboxHover && (
+                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
+                )}
+              </div>
+              <hr className="my-2 border-b-[#eee] w-full ml-2" />
+            </div>
+
+                {/* Labels */}
+            <div className="px-2 flex flex-col items-start w-full">
+              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
+                Labels
+              </span>
+              <div
+                onMouseEnter={() => setRightColInboxHover(true)}
+                onMouseLeave={() => setRightColInboxHover(false)}
+                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+              >
+                <div className="flex items-center pl-[8px] w-full">
+                  <InboxIcon className="size-4 mr-[8px] text-[#666]" />
+                  <span className="text-[#666]">Inbox</span>
+                </div>
+                {rightColInboxHover && (
+                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
+                )}
+              </div>
+              <hr className="my-2 border-b-[#eee] w-full ml-2" />
+            </div>
+                {/* Reminders */}
+            <div className="px-2 flex flex-col items-start w-full">
+              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
+                Reminders
+              </span>
+              <div
+                onMouseEnter={() => setRightColInboxHover(true)}
+                onMouseLeave={() => setRightColInboxHover(false)}
+                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+              >
+                <div className="flex items-center pl-[8px] w-full">
+                  <InboxIcon className="size-4 mr-[8px] text-[#666]" />
+                  <span className="text-[#666]">Inbox</span>
+                </div>
+                {rightColInboxHover && (
+                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
+                )}
+              </div>
+              <hr className="my-2 border-b-[#eee] w-full ml-2" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

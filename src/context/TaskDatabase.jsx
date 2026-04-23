@@ -9,11 +9,11 @@ export const TaskDatabaseProvider = ({ children }) => {
       taskTitle: "Task 01",
       description: "Description test!!",
     },
-    // {
-    //   id: 2,
-    //   taskTitle: "Task 02",
-    //   description: "Description test!!",
-    // },
+    {
+      id: 2,
+      taskTitle: "Task 02",
+      description: "Description test!!",
+    },
   ]);
 
   return (
