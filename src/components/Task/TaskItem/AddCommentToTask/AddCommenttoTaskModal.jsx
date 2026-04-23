@@ -1,8 +1,10 @@
 import {
+  CalendarIcon,
   CheckIcon,
   ChevronUpIcon,
   EllipsisHorizontalIcon,
   FaceSmileIcon,
+  FlagIcon,
   InboxIcon,
   MicrophoneIcon,
   PaperClipIcon,
@@ -189,8 +191,8 @@ export const AddCommenttoTaskModal = () => {
                 className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
               >
                 <div className="flex items-center pl-[8px] w-full">
-                  <InboxIcon className="size-4 mr-[8px] text-[#666]" />
-                  <span className="text-[#666]">Inbox</span>
+                  <CalendarIcon className="size-4 mr-[8px] text-[#666]" />
+                  <span className="text-[#666]">Today</span>
                 </div>
                 {rightColInboxHover && (
                   <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
@@ -210,8 +212,8 @@ export const AddCommenttoTaskModal = () => {
                 className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
               >
                 <div className="flex items-center pl-[8px] w-full">
-                  <InboxIcon className="size-4 mr-[8px] text-[#666]" />
-                  <span className="text-[#666]">Inbox</span>
+                  <FlagIcon className="size-4 mr-[8px] text-[#666]" />
+                  <span className="text-[#666]">P3</span>
                 </div>
                 {rightColInboxHover && (
                   <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
@@ -230,9 +232,9 @@ export const AddCommenttoTaskModal = () => {
                 onMouseLeave={() => setRightColInboxHover(false)}
                 className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
               >
-                <div className="flex items-center pl-[8px] w-full">
-                  <InboxIcon className="size-4 mr-[8px] text-[#666]" />
+                <div className="flex items-center pl-[8px]  bg-[#00000033]">
                   <span className="text-[#666]">Inbox</span>
+                  <XMarkIcon className="size-4 mr-[8px] text-[#666]" />
                 </div>
                 {rightColInboxHover && (
                   <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
