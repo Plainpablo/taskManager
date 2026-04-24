@@ -12,6 +12,8 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import {FlagIcon as FlagIconSolid } from "@heroicons/react/24/solid"
+
 import { PuzzlePiece } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -44,6 +46,14 @@ export const AddCommenttoTaskModal = () => {
       document.removeEventListener("click", handleOutSideClick);
     };
   }, [isCommentClicked]);
+
+  const priorityList = [
+    { icon: FlagIconSolid, title: "Priority 1", color: "#d1453b" },
+    { icon: FlagIconSolid, title: "Priority 2", color: "#eb8909" },
+    { icon: FlagIconSolid, title: "Priority 3", color: "#246fe0" },
+    { icon: FlagIcon, title: "Priority 4", color: "#666" },
+  ];
+
   return (
     <div className="w-full h-screen bg-[rgba(0,0,0,.4)] fixed z-[90] top-0 left-0 flex items-center justify-center px-[32px] py-[64px]">
       <div className="bg-white shadow-[0_2px_8px_rgba(0,0,0,0.16)] max-w-[864px] w-full h-full rounded-[10px]">
@@ -161,104 +171,115 @@ export const AddCommenttoTaskModal = () => {
 
           <div className="bg-[#fcfaf8] h-full flex flex-col items-start p-4">
             <div className="px-2 flex flex-col items-start w-full">
-              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
+              <span className=" pl-[8px] font-semibold text-sm text-[#666] h-7 flex justify-center items-center">
                 Project
               </span>
               <div
                 onMouseEnter={() => setRightColInboxHover(true)}
                 onMouseLeave={() => setRightColInboxHover(false)}
-                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+                className="group h-7 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
               >
                 <div className="flex items-center pl-[8px] w-full">
                   <InboxIcon className="size-4 mr-[8px] text-[#666]" />
                   <span className="text-[#666]">Inbox</span>
                 </div>
-                {rightColInboxHover && (
-                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
-                )}
+                <ChevronDownIcon className="group-hover:flex hidden text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
               </div>
+
               <hr className="my-2 border-b-[#eee] w-full ml-2" />
             </div>
 
-                {/* Date */}
+            {/* Date */}
             <div className="px-2 flex flex-col items-start w-full">
-              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
+              <span className=" pl-[8px] font-semibold text-sm text-[#666] h-7 flex justify-center items-center">
                 Date
               </span>
               <div
                 onMouseEnter={() => setRightColInboxHover(true)}
                 onMouseLeave={() => setRightColInboxHover(false)}
-                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+                className="group h-7 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
               >
                 <div className="flex items-center pl-[8px] w-full">
                   <CalendarIcon className="size-4 mr-[8px] text-[#666]" />
                   <span className="text-[#666]">Today</span>
                 </div>
-                {rightColInboxHover && (
-                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
-                )}
+                <ChevronDownIcon className="group-hover:flex hidden text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
               </div>
               <hr className="my-2 border-b-[#eee] w-full ml-2" />
             </div>
 
-                {/* Priority */}
+            {/* Priority */}
             <div className="px-2 flex flex-col items-start w-full">
-              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
+              <span className=" pl-[8px] font-semibold text-sm text-[#666] h-7 flex justify-center items-center">
                 Priority
               </span>
+
               <div
                 onMouseEnter={() => setRightColInboxHover(true)}
                 onMouseLeave={() => setRightColInboxHover(false)}
-                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+                className="group h-7 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full relative"
               >
                 <div className="flex items-center pl-[8px] w-full">
                   <FlagIcon className="size-4 mr-[8px] text-[#666]" />
-                  <span className="text-[#666]">P3</span>
+                  <span className="text-[#666]">P4</span>
                 </div>
-                {rightColInboxHover && (
-                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
-                )}
+                <ChevronDownIcon className="group-hover:flex hidden text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
+                {/* Priority drop-down */}
+                <div className="shadow-[0_2px_4px_rgba(0,0,0,0.08)] absolute bg-white z-50 border-[#0000001a] border-[1px] rounded-[10px]">
+                  <ul>
+                    {priorityList.map((priority, index) => (
+                      <li key={index} className="flex items-center px-2 py-1">
+                        <priority.icon className={`size-4 mr-[8px] text-[${priority.color}] `} />
+                        <span className="text-[#666] mx-[10px]">
+                          {priority.title}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
               <hr className="my-2 border-b-[#eee] w-full ml-2" />
             </div>
 
-                {/* Labels */}
-            <div className="px-2 flex flex-col items-start w-full">
-              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
-                Labels
-              </span>
+            {/* Labels */}
+            <div className="group px-2 flex flex-col items-start w-full">
+              <div className="flex justify-between items-center w-full hover:bg-[#eee] hover:rounded-[5px] mb-1 h-7">
+                <span className=" pl-[8px] font-semibold text-sm text-[#666] group-hover:text-[#202020]">
+                  Labels
+                </span>
+                <PlusIcon className="text-[#666] size-4 group-hover:text-[#202020] hover:rounded-[5px] mr-2" />
+              </div>
               <div
                 onMouseEnter={() => setRightColInboxHover(true)}
                 onMouseLeave={() => setRightColInboxHover(false)}
-                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+                className="group h-7 flex flex-row justify-between items-center w-full "
               >
-                <div className="flex items-center pl-[8px]  bg-[#00000033]">
-                  <span className="text-[#666]">Inbox</span>
-                  <XMarkIcon className="size-4 mr-[8px] text-[#666]" />
+                <div className="flex items-center pl-2 bg-[#00000033] rounded-[5px] gap-1 h-7 ml-2">
+                  <span className="text-[#202020] text-sm">KK</span>
+                  <div className="size-5 flex items-center justify-center">
+                    <XMarkIcon className="size-3 text-[#666]" />
+                  </div>
                 </div>
-                {rightColInboxHover && (
-                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
-                )}
               </div>
               <hr className="my-2 border-b-[#eee] w-full ml-2" />
             </div>
-                {/* Reminders */}
+            {/* Reminders */}
             <div className="px-2 flex flex-col items-start w-full">
-              <span className=" pl-[8px] font-semibold text-sm text-[#666]">
-                Reminders
-              </span>
+              <div className="flex justify-between items-center w-full hover:bg-[#eee] hover:rounded-[5px] mb-1 h-7">
+                <span className=" pl-[8px] font-semibold text-sm text-[#666] group-hover:text-[#202020]">
+                  Reminders
+                </span>
+                <PlusIcon className="text-[#666] size-4 group-hover:text-[#202020] hover:rounded-[5px] mr-2" />
+              </div>
               <div
                 onMouseEnter={() => setRightColInboxHover(true)}
                 onMouseLeave={() => setRightColInboxHover(false)}
-                className="h-8 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full "
+                className="group h-7 flex flex-row justify-between items-center w-full "
               >
                 <div className="flex items-center pl-[8px] w-full">
                   <InboxIcon className="size-4 mr-[8px] text-[#666]" />
                   <span className="text-[#666]">Inbox</span>
                 </div>
-                {rightColInboxHover && (
-                  <ChevronDownIcon className="text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
-                )}
               </div>
               <hr className="my-2 border-b-[#eee] w-full ml-2" />
             </div>
