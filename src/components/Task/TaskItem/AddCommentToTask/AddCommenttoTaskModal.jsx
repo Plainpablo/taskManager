@@ -12,16 +12,20 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import {FlagIcon as FlagIconSolid } from "@heroicons/react/24/solid"
 
 import { PuzzlePiece } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
+import { PriorityDropDown } from "./PriorityDropDown";
+import { usePriority } from "../../../../context/PriorityContext";
+import { AddLabelDrop } from "./AddLabelDrop";
 
 export const AddCommenttoTaskModal = () => {
   const [isCommentNull, setIsCommentNull] = useState(true);
   const [isCommentClicked, setIsCommentClicked] = useState(false);
   const [rightColInboxHover, setRightColInboxHover] = useState(false);
   const commentRef = useRef(null);
+
+  const { displayPriority, setIsPriorityDropOpen } = usePriority();
 
   function handleInputValue(e) {
     e.target.value === "" ? setIsCommentNull(true) : setIsCommentNull(false);
@@ -46,13 +50,6 @@ export const AddCommenttoTaskModal = () => {
       document.removeEventListener("click", handleOutSideClick);
     };
   }, [isCommentClicked]);
-
-  const priorityList = [
-    { icon: FlagIconSolid, title: "Priority 1", color: "#d1453b" },
-    { icon: FlagIconSolid, title: "Priority 2", color: "#eb8909" },
-    { icon: FlagIconSolid, title: "Priority 3", color: "#246fe0" },
-    { icon: FlagIcon, title: "Priority 4", color: "#666" },
-  ];
 
   return (
     <div className="w-full h-screen bg-[rgba(0,0,0,.4)] fixed z-[90] top-0 left-0 flex items-center justify-center px-[32px] py-[64px]">
@@ -215,45 +212,42 @@ export const AddCommenttoTaskModal = () => {
               </span>
 
               <div
+              onClick={(e) => { 
+                e.stopPropagation();
+                setIsPriorityDropOpen(prev => !prev)}}
                 onMouseEnter={() => setRightColInboxHover(true)}
                 onMouseLeave={() => setRightColInboxHover(false)}
-                className="group h-7 flex flex-row justify-between items-center hover:bg-[#eee] hover:rounded-[5px] w-full relative"
+                className="group h-7 flex flex-row justify-center items-center hover:bg-[#eee] hover:rounded-[5px] w-full relative"
               >
-                <div className="flex items-center pl-[8px] w-full">
-                  <FlagIcon className="size-4 mr-[8px] text-[#666]" />
-                  <span className="text-[#666]">P4</span>
+                {/* Selected Value Display*/}
+                <div className="flex flex-row items-center justify-between w-full">
+                  <div className="flex items-center pl-[8px] w-full">
+                    {/* <FlagIcon className="size-4 mr-[8px] text-[#666]" /> */}
+                    <displayPriority.icon className ={`size-4 mr-[8px] text-[${displayPriority.color}]`}/>
+                    <span className="text-[#666]">{displayPriority.abbr}</span>
+                  </div>
+                  <ChevronDownIcon className="group-hover:flex hidden text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
                 </div>
-                <ChevronDownIcon className="group-hover:flex hidden text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
+
                 {/* Priority drop-down */}
-                <div className="shadow-[0_2px_4px_rgba(0,0,0,0.08)] absolute bg-white z-50 border-[#0000001a] border-[1px] rounded-[10px]">
-                  <ul>
-                    {priorityList.map((priority, index) => (
-                      <li key={index} className="flex items-center px-2 py-1">
-                        <priority.icon className={`size-4 mr-[8px] text-[${priority.color}] `} />
-                        <span className="text-[#666] mx-[10px]">
-                          {priority.title}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <PriorityDropDown />
               </div>
+
               <hr className="my-2 border-b-[#eee] w-full ml-2" />
             </div>
 
             {/* Labels */}
             <div className="group px-2 flex flex-col items-start w-full">
-              <div className="flex justify-between items-center w-full hover:bg-[#eee] hover:rounded-[5px] mb-1 h-7">
+              <div className="flex justify-between items-center w-full hover:bg-[#eee] hover:rounded-[5px] mb-1 h-7 relative">
                 <span className=" pl-[8px] font-semibold text-sm text-[#666] group-hover:text-[#202020]">
                   Labels
                 </span>
                 <PlusIcon className="text-[#666] size-4 group-hover:text-[#202020] hover:rounded-[5px] mr-2" />
+                {/* Drop down - add label */}
+                <AddLabelDrop/>
               </div>
-              <div
-                onMouseEnter={() => setRightColInboxHover(true)}
-                onMouseLeave={() => setRightColInboxHover(false)}
-                className="group h-7 flex flex-row justify-between items-center w-full "
-              >
+              {/* Labels display */}
+               <div className="group h-7 flex flex-row justify-between items-center w-full ">
                 <div className="flex items-center pl-2 bg-[#00000033] rounded-[5px] gap-1 h-7 ml-2">
                   <span className="text-[#202020] text-sm">KK</span>
                   <div className="size-5 flex items-center justify-center">
@@ -261,6 +255,7 @@ export const AddCommenttoTaskModal = () => {
                   </div>
                 </div>
               </div>
+
               <hr className="my-2 border-b-[#eee] w-full ml-2" />
             </div>
             {/* Reminders */}

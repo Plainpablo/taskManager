@@ -8,21 +8,24 @@ import { SearchProvider } from "./context/SearchContext.jsx";
 import { SideBarMenuProvider } from "./context/SideBarMenuContext.jsx";
 import { TaskDatabaseProvider } from "./context/TaskDatabase.jsx";
 import { DisplayModalProvider } from "./context/DisplayModalContext.jsx";
+import { PriorityProvider } from "./context/PriorityContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <DisplayModalProvider>
-      <TaskDatabaseProvider>
-        <SideBarMenuProvider>
-          <SearchProvider>
-            <ModalProvider>
-              <PageProvider>
-                <App />
-              </PageProvider>
-            </ModalProvider>
-          </SearchProvider>
-        </SideBarMenuProvider>
-      </TaskDatabaseProvider>
-    </DisplayModalProvider>
+    <PriorityProvider>
+      <DisplayModalProvider>
+        <TaskDatabaseProvider>
+          <SideBarMenuProvider>
+            <SearchProvider>
+              <ModalProvider>
+                <PageProvider>
+                  <App />
+                </PageProvider>
+              </ModalProvider>
+            </SearchProvider>
+          </SideBarMenuProvider>
+        </TaskDatabaseProvider>
+      </DisplayModalProvider>
+    </PriorityProvider>
   </StrictMode>,
 );
