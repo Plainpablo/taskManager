@@ -18,6 +18,8 @@ import { useEffect, useRef, useState } from "react";
 import { PriorityDropDown } from "./PriorityDropDown";
 import { usePriority } from "../../../../context/PriorityContext";
 import { AddLabelDrop } from "./AddLabelDrop";
+import { useLabels } from "../../../../context/LabelsContext";
+import { CommentLabel } from "./CommentLabel";
 
 export const AddCommenttoTaskModal = () => {
   const [isCommentNull, setIsCommentNull] = useState(true);
@@ -26,6 +28,7 @@ export const AddCommenttoTaskModal = () => {
   const commentRef = useRef(null);
 
   const { displayPriority, setIsPriorityDropOpen } = usePriority();
+  const { isAddLabelOpen, setIsAddLabelOpen, labels } = useLabels();
 
   function handleInputValue(e) {
     e.target.value === "" ? setIsCommentNull(true) : setIsCommentNull(false);
@@ -212,9 +215,10 @@ export const AddCommenttoTaskModal = () => {
               </span>
 
               <div
-              onClick={(e) => { 
-                e.stopPropagation();
-                setIsPriorityDropOpen(prev => !prev)}}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsPriorityDropOpen((prev) => !prev);
+                }}
                 onMouseEnter={() => setRightColInboxHover(true)}
                 onMouseLeave={() => setRightColInboxHover(false)}
                 className="group h-7 flex flex-row justify-center items-center hover:bg-[#eee] hover:rounded-[5px] w-full relative"
@@ -223,14 +227,16 @@ export const AddCommenttoTaskModal = () => {
                 <div className="flex flex-row items-center justify-between w-full">
                   <div className="flex items-center pl-[8px] w-full">
                     {/* <FlagIcon className="size-4 mr-[8px] text-[#666]" /> */}
-                    <displayPriority.icon className ={`size-4 mr-[8px] text-[${displayPriority.color}]`}/>
+                    <displayPriority.icon
+                      className={`size-4 mr-[8px] text-[${displayPriority.color}]`}
+                    />
                     <span className="text-[#666]">{displayPriority.abbr}</span>
                   </div>
                   <ChevronDownIcon className="group-hover:flex hidden text-[#202020] size-4 hover:bg-[#eee] hover:rounded-[5px] mr-2" />
                 </div>
 
                 {/* Priority drop-down */}
-                  <PriorityDropDown />
+                <PriorityDropDown />
               </div>
 
               <hr className="my-2 border-b-[#eee] w-full ml-2" />
@@ -238,22 +244,22 @@ export const AddCommenttoTaskModal = () => {
 
             {/* Labels */}
             <div className="group px-2 flex flex-col items-start w-full">
-              <div className="flex justify-between items-center w-full hover:bg-[#eee] hover:rounded-[5px] mb-1 h-7 relative">
-                <span className=" pl-[8px] font-semibold text-sm text-[#666] group-hover:text-[#202020]">
-                  Labels
-                </span>
-                <PlusIcon className="text-[#666] size-4 group-hover:text-[#202020] hover:rounded-[5px] mr-2" />
+              <div className="flex justify-center items-center w-full hover:bg-[#eee] hover:rounded-[5px] mb-1 h-7 relative">
+                <div
+                  onClick={() => setIsAddLabelOpen((prev) => !prev)}
+                  className="flex justify-between items-center w-full"
+                >
+                  <span className=" pl-[8px] font-semibold text-sm text-[#666] group-hover:text-[#202020]">
+                    Labels
+                  </span>
+                  <PlusIcon className="text-[#666] size-4 group-hover:text-[#202020] hover:rounded-[5px] mr-2" />
+                </div>
                 {/* Drop down - add label */}
-                <AddLabelDrop/>
+                <AddLabelDrop />
               </div>
               {/* Labels display */}
-               <div className="group h-7 flex flex-row justify-between items-center w-full ">
-                <div className="flex items-center pl-2 bg-[#00000033] rounded-[5px] gap-1 h-7 ml-2">
-                  <span className="text-[#202020] text-sm">KK</span>
-                  <div className="size-5 flex items-center justify-center">
-                    <XMarkIcon className="size-3 text-[#666]" />
-                  </div>
-                </div>
+              <div className="group flex flex-row items-center w-full flex-wrap ml-2">
+                <CommentLabel />
               </div>
 
               <hr className="my-2 border-b-[#eee] w-full ml-2" />
