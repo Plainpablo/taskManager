@@ -8,7 +8,7 @@ export const LabelsProvider = ({ children }) => {
 
 
   return (
-    <LabelsContext.Provider value={{ isAddLabelOpen, setIsAddLabelOpen, }}>
+    <LabelsContext.Provider value={{ isAddLabelOpen, setIsAddLabelOpen, labels, setLabels }}>
       {children}
     </LabelsContext.Provider>
   );
